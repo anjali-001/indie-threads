@@ -1,0 +1,15 @@
+.navLogo{
+    width: 150px;
+    margin-left: 50px;
+}
+
+.navHeader__style
+{
+    background-color: #16161A;
+}
+.navHeader__item{
+    color: #FFFFFE !important;
+    margin-left: 50px;
+    font-size: 25px;
+
+}
