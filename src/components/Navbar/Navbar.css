@@ -10,6 +10,25 @@
 .navHeader__item{
     color: #FFFFFE !important;
     margin-left: 50px;
-    font-size: 25px;
+    font-size: 22px;
 
+}
+
+.navHeader__search{
+    color: #2CB67D;
+    border: 2px solid #2CB67D;
+    margin-right: 20px;
+}
+
+.navHeader__user{
+    color: #FFFFFE;
+    border: 2px solid #FFFFFE;
+    margin-right: 45px;
+}
+
+.navHeader__icon {
+    border-radius: 20px;
+    padding:5px;
+    width: 35px;
+    height: 35px;
 }
