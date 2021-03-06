@@ -1,10 +1,12 @@
-import fire from '../src/fire'
-import React, {useState, useEffect} from 'react'
-import Login from './component/login'
-import Hero from './component/hero.js'
-import './App.css'
+import fire from '../../fire';
+import React, {useState, useEffect} from 'react';
 //import 'semantic-ui-css/semantic.min.css'
-import Menu from './components/Menu'
+
+import Menu from '../../components/Menu';
+import Login from '../../components/Login';
+import Hero from "../../components/Hero";
+
+import './Style.css';
 
 const App = () => {
   const [password, setPassword] = useState("")
