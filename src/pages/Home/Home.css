@@ -29,3 +29,7 @@ div{
 .home__filter{
     list-style: none;
 }
+.seperator{
+    padding-top: 45px;
+    padding-bottom: 20px;
+}

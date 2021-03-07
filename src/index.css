@@ -22,3 +22,7 @@ code {
   box-sizing: border-box;
   background-color: #16161A;
 }
+.custom-container{
+  width: 80%;
+  margin: auto;
+}

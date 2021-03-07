@@ -7,6 +7,7 @@ import HomeBottomCarousel from './HomeBottomCarousel';
 const Home = () => {
   return (
     <div className="home componentContainer">
+        <div className="custom-container">
       <div className="row">
         <div className="col-md-3 col-3 text-light home__left">
           <h5>Browse by Genre</h5>
@@ -24,13 +25,14 @@ const Home = () => {
           </ul>
         </div>
         <div className="col-md-9 col-9 text-light home__right">
-          <h1 className="home__right__h1">Featured and recommended</h1>
+          <h1 className="home__right__h1 seperator">Featured and recommended</h1>
           <HomeImageContainer/>
-          <h1>Top Releases</h1>
+          <h1 className="seperator">Top Releases</h1>
           <HomeCarousel/>
-          <h1>Top Communities</h1>
+          <h1 className="seperator">Top Communities</h1>
           <HomeBottomCarousel/>
             
+        </div>
         </div>
       </div>
     </div>
