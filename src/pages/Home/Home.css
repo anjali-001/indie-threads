@@ -1,4 +1,15 @@
-.home{
+.home__left{
+    padding-top:120px;
+    padding-left:82px;
+    min-height:100vh;
     
-    
+}
+
+.home__right
+{
+    min-height: 100vh;
+    padding-top: 50px;
+}
+img{
+
 }
