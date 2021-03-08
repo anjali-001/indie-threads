@@ -1,20 +1,11 @@
 import React, { useState } from "react";
-import { Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar, Dropdown } from "react-bootstrap";
 import FeatherIcon from "feather-icons-react";
 import "./Navbar.css";
 import logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
 function NavHeader() {
   const [toggle, setToggle] = useState(false);
-  // const [value, setValue] = useState(null);
-
-  // const handleChange = (event) => {
-  //   setValue(event.target.value)
-  //   if(value!=null)
-  //   {
-  //     console.log(value.length);
-  //   }
-  // }
 
   const searchClick = () => {
     setToggle(!toggle);
@@ -45,7 +36,12 @@ function NavHeader() {
               className="navHeader__input"
             />
           ) : null}
-          <Link to="/explore" className={window.location.pathname == '/explore'?"disable-click":""}>
+          <Link
+            to="/explore"
+            className={
+              window.location.pathname == "/explore" ? "disable-click" : ""
+            }
+          >
             <FeatherIcon
               className="navHeader__search navHeader__icon"
               icon="search"
@@ -53,7 +49,7 @@ function NavHeader() {
             />
           </Link>
         </div>
-        <FeatherIcon className="navHeader__user navHeader__icon" icon="user" />
+          <FeatherIcon className="navHeader__user navHeader__icon" icon="user" />
       </Navbar>
     </div>
   );
