@@ -1,29 +1,62 @@
-import React, {useState} from 'react'
-import { Nav, Navbar} from 'react-bootstrap'
-import FeatherIcon from 'feather-icons-react';
-import './Navbar.css'
-import logo from '../../assets/logo.svg'
+import React, { useState } from "react";
+import { Nav, Navbar } from "react-bootstrap";
+import FeatherIcon from "feather-icons-react";
+import "./Navbar.css";
+import logo from "../../assets/logo.svg";
+import { Link } from "react-router-dom";
 function NavHeader() {
-  const [toggle,setToggle] = useState(false);
+  const [toggle, setToggle] = useState(false);
+  // const [value, setValue] = useState(null);
 
-    return (
-        <div className="navHeader navHeader__style">
-  <Navbar className="custom-container">
-    <Navbar.Brand href="/"><img className= "navLogo" src={logo}/></Navbar.Brand>
-    <Nav className="mr-auto">
-      <Nav.Link className ="navHeader__item" href="/">Home</Nav.Link>
-      <Nav.Link className ="navHeader__item" href="#features">Explore</Nav.Link>
-      <Nav.Link className ="navHeader__item" href="#pricing">Threads</Nav.Link>
-    </Nav>
-    <div className="navHeader__searchBorder">
-    {toggle? <input placeholder="Search all games" type="text" className="navHeader__input"/>: null }
-    <FeatherIcon className="navHeader__search navHeader__icon" icon="search"  onClick={() => setToggle(!toggle)}/>
+  // const handleChange = (event) => {
+  //   setValue(event.target.value)
+  //   if(value!=null)
+  //   {
+  //     console.log(value.length);
+  //   }
+  // }
+
+  const searchClick = () => {
+    setToggle(!toggle);
+  };
+
+  return (
+    <div className="navHeader navHeader__style">
+      <Navbar className="custom-container">
+        <Navbar.Brand href="/">
+          <img className="navLogo" src={logo} />
+        </Navbar.Brand>
+        <Nav className="mr-auto">
+          <Nav.Link className="navHeader__item" href="/">
+            Home
+          </Nav.Link>
+          <Nav.Link className="navHeader__item" href="#features">
+            Explore
+          </Nav.Link>
+          <Nav.Link className="navHeader__item" href="#pricing">
+            Threads
+          </Nav.Link>
+        </Nav>
+        <div className="navHeader__searchBorder">
+          {toggle ? (
+            <input
+              placeholder="Search all games"
+              type="text"
+              className="navHeader__input"
+            />
+          ) : null}
+          <Link to="/explore" className={window.location.pathname == '/explore'?"disable-click":""}>
+            <FeatherIcon
+              className="navHeader__search navHeader__icon"
+              icon="search"
+              onClick={searchClick}
+            />
+          </Link>
+        </div>
+        <FeatherIcon className="navHeader__user navHeader__icon" icon="user" />
+      </Navbar>
     </div>
-    <FeatherIcon className="navHeader__user navHeader__icon" icon="user"/>
-  </Navbar>
-
-</div>
-    )
+  );
 }
 
-export default NavHeader
+export default NavHeader;

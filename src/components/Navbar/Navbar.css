@@ -58,3 +58,6 @@
         width:250px;
     }
 }
+.disable-click{
+    pointer-events: none;
+}
