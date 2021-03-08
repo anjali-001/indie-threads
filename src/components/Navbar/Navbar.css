@@ -16,8 +16,7 @@
 
 .navHeader__search{
     color: #2CB67D;
-    border: 2px solid #2CB67D;
-    margin-right: 20px;
+    /* border: 2px solid #2CB67D; */
 }
 
 .navHeader__user{
@@ -31,4 +30,31 @@
     padding:5px;
     width: 35px;
     height: 35px;
+}
+.navHeader__input{
+    background-color: #16161A;
+    border: none;
+    height: 35px;
+    animation: slide 0.5s ease-in;
+    margin-left: 20px;
+    outline: none;
+    color: #2CB67D ;
+   
+}
+.navHeader__input::placeholder{
+    color: #2CB67D;
+    opacity: 0.6;
+}
+.navHeader__searchBorder{
+    border: 2px solid #2CB67D;
+    border-radius: 50px;
+    margin-right: 20px;
+}
+@keyframes slide{
+    0%{
+        width: 0px;
+    }
+    100%{
+        width:250px;
+    }
 }
