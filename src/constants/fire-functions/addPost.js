@@ -1,9 +1,11 @@
 import fire from '../../fire.js'
 import firebase from 'firebase'
 
-const addPost = async (content, genre, authorRef, requirements) => {
+const addPost = async (content, genre, requirements) => {
+    var uid = await firebase.auth().currentUser.uid;
+    uid = "users/" + uid;
     await fire.firestore().collection("posts").add({
-        author: authorRef,
+        author: uid,
         genre: genre,
         sysRequirements: requirements,
         content: content

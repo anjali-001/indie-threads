@@ -2,7 +2,7 @@ import fire from '../../fire.js'
 import firebase from 'firebase'
 
 const addPost = async (username, email, uid) => {
-    await fire.firestore().collection("users").add({
+    await fire.firestore().collection("users").doc(uid).set({
         username: username,
         email: email,
         uid: uid,
