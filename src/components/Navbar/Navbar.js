@@ -3,12 +3,15 @@ import { Nav, Navbar, Dropdown } from "react-bootstrap";
 import FeatherIcon from "feather-icons-react";
 import "./Navbar.css";
 import logo from "../../assets/logo.svg";
+import img from '../../pages/Home/assets/Img1.png'
 import { Link } from "react-router-dom";
 function NavHeader() {
   const [toggle, setToggle] = useState(false);
+  const [dropdown, setDropdown ] = useState(false);
 
   const searchClick = () => {
     setToggle(!toggle);
+    if(dropdown) setDropdown(false)
   };
 
   return (
@@ -49,7 +52,16 @@ function NavHeader() {
             />
           </Link>
         </div>
-          <FeatherIcon className="navHeader__user navHeader__icon" icon="user" />
+        <div className="navHeader__dropdown">
+          <FeatherIcon className="navHeader__user navHeader__icon" icon="user" onClick={()=> setDropdown(!dropdown)} />
+          {dropdown?<div className="navHeader__dropdownContent" >
+            <img className="mx-auto" src={img} />
+            <p>username</p>
+            <button className="">Sign in</button>
+          </div>:null}
+          
+        </div>
+          
       </Navbar>
     </div>
   );
