@@ -1,4 +1,4 @@
-import fire from '../../fire.js'
+import fire from '../../../fire.js'
 import firebase from 'firebase'
 
 const addPost = async (content, genre, requirements) => {

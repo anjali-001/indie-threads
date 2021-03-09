@@ -1,4 +1,4 @@
-import fire from '../../fire.js'
+import fire from '../../../fire.js'
 import firebase from 'firebase'
 
 const makeUser = async (username, email, uid) => {
