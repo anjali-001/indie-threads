@@ -5,6 +5,7 @@ import React, {useState, useEffect} from 'react';
 import Menu from '../../components/Menu';
 import Login from '../../components/Login';
 import Hero from "../../components/Hero";
+import makeUser from '../../constants/fire-functions/makeUser'
 
 import './Style.css';
 
@@ -50,6 +51,7 @@ const App = () => {
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
+      .then((res) => {makeUser(res.user.email, res.user.email, res.user.uid)})
       .catch((err) => {
         switch(err.code){
           case "auth/email-already-in-use":

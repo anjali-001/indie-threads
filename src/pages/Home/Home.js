@@ -1,20 +1,11 @@
 import React from 'react';
-import firebase from 'firebase'
-import fire from '../../fire'
+import Login from '../../components/Login';
+import addPost from '../../constants/fire-functions/addPost'
 
 const Home = () => {
 
     const func = async (e) => {
-        e.preventDefault();
-        const db = fire.firestore()
-        const log = await db.collection("posts").add({
-            testing: "hello"
-        }).then((doc) => {
-            console.log("doc uploaded")
-        }).catch(err => {
-            console.log(err);
-        })
-        console.log(log);
+        await addPost("testc", ["comedy"], "user/kesh", "windows10");
     };
 
 
