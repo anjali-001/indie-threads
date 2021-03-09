@@ -1,11 +1,12 @@
 import fire from '../../fire.js'
 import firebase from 'firebase'
 
-const addPost = async (username, email, uid) => {
+const makeUser = async (username, email, uid) => {
     await fire.firestore().collection("users").doc(uid).set({
         username: username,
         email: email,
         uid: uid,
+        posts: []
     }).then((docRef) => {
         console.log("User added successfullly")
     }).catch((err) => {
@@ -13,4 +14,4 @@ const addPost = async (username, email, uid) => {
     })
 }   
 
-export default addPost;
+export default makeUser;

@@ -6,7 +6,6 @@ const getUser = async () => {
     var result = null;
     var docRef = await fire.firestore().collection("users").doc(userUID);
     await docRef.get().then((doc) => {
-        //console.log(doc.data())
         result = doc.data();
     }).catch((error) => {
         console.log("User doesn't exist!", error);
