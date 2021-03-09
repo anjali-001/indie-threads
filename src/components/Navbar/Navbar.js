@@ -24,7 +24,7 @@ function NavHeader() {
           <Nav.Link className="navHeader__item" href="/">
             Home
           </Nav.Link>
-          <Nav.Link className="navHeader__item" href="#features">
+          <Nav.Link className="navHeader__item" href="/explore">
             Explore
           </Nav.Link>
           <Nav.Link className="navHeader__item" href="#pricing">
@@ -42,7 +42,7 @@ function NavHeader() {
           <Link
             to="/explore"
             className={
-              window.location.pathname == "/explore" ? "disable-click" : ""
+              (window.location.pathname == "/explore" && toggle ) ? "disable-click" : ""
             }
           >
             <FeatherIcon
