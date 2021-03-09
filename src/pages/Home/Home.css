@@ -10,8 +10,14 @@
     min-height: 100vh;
     padding-top: 50px;
 }
-img{
+.home__imageContainer img{
     width: 85%;
+    opacity: 0.5;
+    transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+}
+.home__imageContainer img:hover{
+    opacity: 1;
 }
 div{
     padding: 0;
@@ -28,6 +34,11 @@ div{
 
 .home__filter{
     list-style: none;
+}
+
+.home__filter li:hover{
+    color: #2CB67D;
+    cursor: pointer;
 }
 .seperator{
     padding-top: 45px;
