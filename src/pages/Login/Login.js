@@ -1,10 +1,11 @@
 import fire from '../../fire';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 //import 'semantic-ui-css/semantic.min.css'
 
 import Menu from '../../components/Menu';
 import Login from '../../components/Login';
 import Hero from "../../components/Hero";
+import { AuthContext } from '../../auth';
 
 import './Style.css';
 
@@ -15,6 +16,8 @@ const App = () => {
   const [account, setAccount] = useState("")
   const [emailError, setEmailError] = useState("")
   const [passwordError, setPasswordError] = useState("")
+
+  const currentUser = useContext(AuthContext);
   
   const clearInputs = () => {
     setEmail("");
@@ -81,6 +84,7 @@ const App = () => {
   useEffect(() => {
     authListener();
   }, [])
+
 
   return (
     <div className="App">
