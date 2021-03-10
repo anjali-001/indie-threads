@@ -21,7 +21,6 @@ const Home = () => {
               <li>Simulations</li>
               <li>Sports</li>
               <li>Strategy</li>
-
           </ul>
         </div>
         <div className="col-md-9 col-9 text-light home__right">
