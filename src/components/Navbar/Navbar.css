@@ -1,0 +1,127 @@
+.navLogo{
+    width: 150px;
+    margin-left: 50px;
+}
+
+.navHeader__style
+{
+    background-color: #16161A;
+}
+.navHeader__item{
+    color: #FFFFFE !important;
+    margin-left: 50px;
+    font-size: 22px;
+
+}
+
+.navHeader__item:hover{
+    /* background-color: #2CB67D; */
+    color: #2CB67D !important;
+    border-radius: 15px;
+    transition: color 0.2s ease-in;
+}
+
+.navHeader__search{
+    color: #2CB67D;
+    /* border: 2px solid #2CB67D; */
+}
+
+.navHeader__user{
+    color: #FFFFFE;
+    border: 2px solid #FFFFFE;
+    margin-right: 45px;
+    cursor: pointer;
+}
+
+.navHeader__icon {
+    border-radius: 20px;
+    padding:5px;
+    width: 35px;
+    height: 35px;
+}
+.navHeader__input{
+    background-color: #16161A;
+    border: none;
+    height: 35px;
+    animation: slide 0.5s ease-in;
+    margin-left: 20px;
+    outline: none;
+    color: #2CB67D ;
+   
+}
+.navHeader__input::placeholder{
+    color: #2CB67D;
+    opacity: 0.6;
+}
+.navHeader__searchBorder{
+    border: 2px solid #2CB67D;
+    border-radius: 50px;
+    margin-right: 20px;
+}
+@keyframes slide{
+    0%{
+        width: 0px;
+    }
+    100%{
+        width:250px;
+    }
+}
+.disable-click{
+    pointer-events: none;
+}
+
+.navHeader__dropdownContent
+{
+    width: 300px;
+    height: 250px;
+    background-color: #FFFFFE;
+    border-radius: 15px;
+    display: block  ;
+    position: absolute;
+    top: 70px;
+    right: 55px;
+    z-index: 1;
+    box-shadow: 5px 5px 10px 2px  #5A5A77;
+    border: 1px solid #6238E0;
+    animation: drop 0.5s;
+}
+@keyframes drop {
+    0%{
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+        width: 300px;
+        height: 250px;
+    }
+}
+
+.navHeader__dropdownContent img {
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navHeader__dropdownContent button {
+    margin:0 auto;
+    display:block;
+    background-color: #6238E0;
+    border-radius: 20px;
+    padding: 5px 20px;
+    border: none;
+    color: #FFFFFE;
+}
+.navHeader__dropdownContent p {
+    text-align: center;
+    color: #FFFFFE;
+}
+

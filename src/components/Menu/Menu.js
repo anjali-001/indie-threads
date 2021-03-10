@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react'
-import getUser from '../../constants/fire-functions/getUser'
-import addPost from '../../constants/fire-functions/addPost'
+import getUser from '../../constants/fire-functions/getUser/getUser'
+import addPost from '../../constants/fire-functions/addPost/addPost'
 import firebase from 'firebase'
 
 const Menu = () => {
@@ -9,7 +9,7 @@ const Menu = () => {
 
     const getUserInfo = async () => {
       //const uid = await firebase.auth().currentUser.uid
-      await addPost("content", ["horror", "comedy"], "no requirements")
+      await addPost("demo", ["horror", "comedy"], "no requirements")
     }
 
     return (
