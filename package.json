@@ -1,5 +1,6 @@
 {
   "name": "indie-threads",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,8 +9,12 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "apollo-boost": "^0.4.9",
+<<<<<<< HEAD
+    "dotenv": "^8.2.0",
+=======
     "bootstrap": "^4.6.0",
     "feather-icons-react": "^0.4.3",
+>>>>>>> 72798377081074d8e33e1b72e6fe6baedbe281a1
     "firebase": "^8.2.10",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",

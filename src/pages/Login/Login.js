@@ -53,6 +53,7 @@ const App = () => {
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
+      .then((res) => {makeUser(res.user.email, res.user.email, res.user.uid)})
       .catch((err) => {
         switch(err.code){
           case "auth/email-already-in-use":
