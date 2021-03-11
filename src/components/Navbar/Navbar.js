@@ -46,17 +46,19 @@ function NavHeader() {
         </Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link className="navHeader__item" href="#">
-            <Link to="/">
+            <Link className="navHeader__link" to="/">
             Home
             </Link>
           </Nav.Link>
           <Nav.Link className="navHeader__item" href="#">
-            <Link to="/explore">
+            <Link className="navHeader__link" to="/explore">
             Explore
             </Link>
           </Nav.Link>
           <Nav.Link className="navHeader__item" href="#pricing">
+            <Link className="navHeader__link" to="/">
             Threads
+            </Link>
           </Nav.Link>
         </Nav>
         <div className="navHeader__searchBorder">
