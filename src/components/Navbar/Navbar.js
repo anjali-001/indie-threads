@@ -31,8 +31,14 @@ function NavHeader() {
     // console.log(search)
     let arr=[];
     data.filter((item) => {
-      if(item['content'].toLowerCase().includes(search.toLowerCase()))
+      if(item['title'].toLowerCase().includes(search.toLowerCase()))
         arr.push(item);
+      else if(item.genre.filter(post => 
+        {
+          if(post.toLowerCase().includes(search.toLowerCase()))
+          arr.push(item);
+        }
+      ));
     });
     console.log(arr)
     setExpData(arr)

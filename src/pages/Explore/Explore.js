@@ -30,7 +30,7 @@ const Explore = () => {
             {exploreData.map((post) => {
               return (
                 // console.log(post)
-                <PostCard />
+                <PostCard post={post}/>
               );
             })}
           </div>
