@@ -5,6 +5,8 @@
     border-radius: 65px;
     align-self: flex-end;
     margin-right: 70px;
+    padding-top: 45px;
+    padding-left: 40px;
 }
 
 .filter-heading{
@@ -19,11 +21,34 @@
     align-items: center;
     
     color: #FFFFFE;
-    padding-top: 45px;
-    padding-left: 40px;
 }
 
 .filter-img{
     padding-right: 25px;
     height: 40px;
+}
+
+.all-filter{
+    padding-top: 30px;
+}
+
+.filter-genre{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 48px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    color: #94A1B2;
+    padding-bottom: 10px;
+}
+
+.filter-genre:hover{
+    text-decoration: none;
+    color: #2CB67D;
+    cursor: pointer;
 }
