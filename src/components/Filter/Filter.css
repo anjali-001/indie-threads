@@ -1,0 +1,29 @@
+.filter-container{
+    width: 376px;
+    height: 557px;
+    background: #242447;
+    border-radius: 65px;
+    align-self: flex-end;
+    margin-right: 70px;
+}
+
+.filter-heading{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 72px;
+    /* identical to box height */
+    
+    display: flex;
+    align-items: center;
+    
+    color: #FFFFFE;
+    padding-top: 45px;
+    padding-left: 40px;
+}
+
+.filter-img{
+    padding-right: 25px;
+    height: 40px;
+}

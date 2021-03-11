@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Explore.css'
 import getPosts from '../../constants/fire-functions/getPosts'
+import PostCard from '../../components/PostCard'
+import Filter from '../../components/Filter';
 
 const Explore = () => {
     const [data, setData] = useState([])
@@ -21,12 +23,21 @@ const Explore = () => {
         )
     }
     return (
-        <div className="explore-container">
-            {data.map((doc) => {
-                return(
-                    <h1>sdf</h1>
-                )
-            })}
+        <div className="explore componentContainer">
+            <div className="custom-container">
+                <div className="row justify-content-around">
+                    <div className="col-md-8 col-8 text-light explore__left">
+                    {data.map((post) => {
+                        return(
+                            <PostCard />
+                        )
+                    })}
+                    </div>
+                    <div className="col-md-4 filt-container">
+                        <Filter />
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
