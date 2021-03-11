@@ -31,7 +31,7 @@ const Explore = () => {
                     <h1 className="explore-heading">Active Communities</h1>
                     {data.map((post) => {
                         return(
-                            <PostCard />
+                            <PostCard post={post}/>
                         )
                     })}
                     </div>
