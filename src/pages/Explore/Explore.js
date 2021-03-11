@@ -25,8 +25,10 @@ const Explore = () => {
     return (
         <div className="explore componentContainer">
             <div className="custom-container">
+            
                 <div className="row justify-content-around">
                     <div className="col-md-8 col-8 text-light explore__left">
+                    <h1 className="explore-heading">Active Communities</h1>
                     {data.map((post) => {
                         return(
                             <PostCard />

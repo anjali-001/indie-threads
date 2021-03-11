@@ -32,4 +32,18 @@ div{
 .filt-container{
     display: flex;
     flex-direction: column;
+    margin-top: 130px;
+}
+
+.explore-heading{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 56px;
+    line-height: 84px;
+    /* identical to box height */
+
+
+    color: #FFFFFE;
+    padding-bottom: 15px;
 }
