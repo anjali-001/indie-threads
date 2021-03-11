@@ -6,6 +6,7 @@ import Menu from '../../components/Menu';
 import Login from '../../components/Login';
 import Hero from "../../components/Hero";
 import { AuthContext } from '../../auth';
+import makeUser from '../../constants/fire-functions/makeUser';
 
 import './Style.css';
 
