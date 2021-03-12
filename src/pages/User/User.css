@@ -1,0 +1,62 @@
+.user__left img{
+    border-radius: 50%;
+}
+
+.user{
+    color: #FFFFFE;
+}
+
+.user__rightName{
+    display: flex;
+    justify-content: space-between;
+}
+.user__rightLink p{
+    color: #FFFFFE;
+}
+.user__rightLink :hover{
+    color: #2CB67D;
+    transition: color 0.2s ease-in;
+    text-decoration: none;
+}
+.user__icon{
+    color: #FFFFFE;
+}
+
+.user__rightTag{
+    color: #2CB67D;
+    border: 1px solid #2CB67D;
+    border-radius: 15px;
+    padding: 0 8px;
+}
+
+.user__button {
+    color: #FFFFFE;
+    background-color: #16161A;
+    border: 1px solid #2b2b3a;
+    padding: 10px 5px;
+    /* width: 90px;
+    height: 30px;
+    padding: 10px 0; */
+}
+
+.user__button:hover{
+    background-color: #2b2b3a;
+    transition: background-color 0.2s ease-in;
+}
+
+.userCommunityCard__card{
+    width: 300px;
+    height: 250px;
+    background-color: #242447;
+    border-radius: 15px;
+    border: 1px solid #16161A;
+    box-shadow: 0 6px 10px #1d1d22, 0 0 6px #1d1d22;
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    padding: 14px 80px 18px 36px;
+}
+
+
+.userCommunityCard__card:hover{
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px #393950, 0 4px 8px #393950;
+}
