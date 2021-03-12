@@ -8,17 +8,20 @@
     background-color: #16161A;
 }
 .navHeader__item{
-    color: #FFFFFE !important;
     margin-left: 50px;
     font-size: 22px;
 
 }
 
-.navHeader__item:hover{
-    /* background-color: #2CB67D; */
-    color: #2CB67D !important;
-    border-radius: 15px;
+.navHeader__link {
+    color: #FFFFFE;
+}
+
+.navHeader__link:hover{
+    color: #2CB67D;
     transition: color 0.2s ease-in;
+    text-decoration: none;
+    
 }
 
 .navHeader__search{
