@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import img1 from "./assets/Img1.png";
 import img2 from "./assets/Img2.png";
@@ -9,7 +10,14 @@ function HomeImageContainer() {
     return (
         <div className="row home__imageContainer">
         <div className="col-md-5 d-flex justify-content-end">
-          <img src={img1} alt="" />
+          <Link to={{
+            pathname:"/game",
+            props:{
+              gameId:"c8sEokqTer2hZdLt8IUW"
+            }
+          }}>
+            <img src={img1} alt="" />
+          </Link>
         </div>
         <div className="col-md-7">
           <div className="d-flex justify-content-start">

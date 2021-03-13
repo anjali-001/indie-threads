@@ -1,5 +1,7 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 
+import fire from '../../fire';
+import firebase from 'firebase'
 import { AuthContext } from '../../auth';
 import getPosts from '../../constants/fire-functions/getPosts';
 import './Community.css';
@@ -42,12 +44,59 @@ const Comment = (props) => {
     )
 }
 
-const Community = () => {
+const Community = (props) => {
     const currentUser = useContext(AuthContext);
     const [formValue, setFormValue] = useState('');
+    const [user, setUser] = useState(null);
 
-    const posts = getPosts()
-    console.log(posts)
+    useEffect(() => {
+        const userRef = fire.firestore().collection("posts");
+        const userdata = async () => {
+            const data = await userRef.get()
+            data.forEach(doc => {
+                if(doc.id === props.location.props.gameId){
+                    // console.log(doc.id, '=>', doc.data());
+                    setUser(doc.data());
+                }
+                
+            });          
+    
+        };
+        userdata();
+        // setUser(response.user);
+    }, [])
+    
+    const spinner = (
+        <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    )
+    
+    if(user == null){
+        return(
+            <div className="home componentContainer">
+                <div className="localContainer">
+                    <div className="spinner-Container">
+                        {spinner}
+                    </div>
+                </div>            
+            </div>
+        )
+    }
+
+    console.log('user data: ',user.systemRequirements.split(';'))
+    const sysReq = user.systemRequirements.split(';').map((value) => {
+        return(
+            <div className="info-details">
+                {value.trim()}
+            </div>
+        )
+    })
+
+    const renderTags = user.genre.map((value) => {
+        return (
+            <Tag key={value} value={value} />
+        )
+    })
+    
     return (
         <>
             <div className="home componentContainer">
@@ -57,16 +106,12 @@ const Community = () => {
                         <div className="game-icon" />
                         <div className="sub-header">
                             <h1 className="title">
-                                Title
+                                {user.title}
                             </h1>
                             <div className="sub-title">
-                                {/* <div > */}
-                                    Release Date
-                                {/* </div> */}
+                                {user.releaseDate}
                                 <div className="tags-section">
-                                    <Tag value="Indie" />
-                                    <Tag value="Action" />
-                                    <Tag value="Casual" />
+                                    {renderTags}
                                 </div>
                             </div>
                         </div>
@@ -81,16 +126,16 @@ const Community = () => {
                     <div className="info-section">
                         <div className="info__1">
                             <div className="info-details">
-                                Developer
+                                <span>Developer:</span> {user.developer}
                             </div>
                             <div className="info-details">
-                                Page Author
+                                Page Author: {user.author}
                             </div>
                             <div className="info-details">
-                                Supported Platform
+                                Supported Platform: {user.platformsAvailable}
                             </div>
                             <div className="info-details">
-                                Website
+                                Website: <a href={user.website} target="#">{user.website}</a>
                             </div>
 
                         </div>
@@ -99,8 +144,7 @@ const Community = () => {
                                 Systems Requirements:
                             </div>
                             <div className="info-details">
-                            CPU: Intel Core 2 Duo E8400; 
-                            RAM: 4 GB; HDD: 820 MB of storage space; GPU: Integrated GPU / NVIDIA GeForce 510; OS: 64-bit Windows 7 Service Pack 1; DirectX: Version 10 (shader model 4); Screen Resolution: 720p; Network: Broadband Internet Connection
+                                {sysReq}
                             </div>
                         </div>
                     </div>
@@ -121,8 +165,8 @@ const Community = () => {
                         <form>
                             <button type="submit" disabled={!formValue}>
                                 <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M34.0001 1L15.8501 19.15"  stroke="#94A1B2" stroke-width="2"    stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M34 1L22.45 34L15.85 19.15L1 12.55L34 1Z" stroke="#94A1B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M34.0001 1L15.8501 19.15"  stroke="#94A1B2" strokeWidth="2"    strokeLinecap="round" strokeLinejoin="round"/>
+                                    <path d="M34 1L22.45 34L15.85 19.15L1 12.55L34 1Z" stroke="#94A1B2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
                             </button>
                             <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="Start a discussion" />
