@@ -47,25 +47,26 @@
     padding: 0px 25px 25px 0px ;
 }
 
+
 .userCommunityCard__genre{
     color: #2CB67D;
-    /* border: 1px solid #2CB67D; */
-    /* border-radius: 15px; */
     padding: 0px 8px 0px 0px;
     text-transform: capitalize;
     font-weight: 200;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .userCommunityCard__card{
-    width: 250px;
-    height: 250px;
-    /* width: 18rem; */
+    width: 88%;
+    height: 300px;
     background-color: #242447;
     border-radius: 15px;
     border: 1px solid #16161A;
     box-shadow: 0 6px 10px #25252c, 0 0 6px #25252c;
     transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-    /* padding: 14px 80px 18px 36px; */
-    /* text-overflow: ellipsis; */
 
 }
 
@@ -76,8 +77,6 @@
 }
 
 .card__text{
-    /* height: 100px;
-    width: 200px; */
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
