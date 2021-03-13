@@ -4,6 +4,30 @@ import img from '../Home/assets/Img3.png'
 import FeatherIcon from "feather-icons-react";
 import UserCommunityCard from './UserCommunityCard';
 
+const data=[
+    {
+        title: "Untitled Goose Game",
+        text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        genre: ["horror", "adventure", "RPG"]
+    },
+    {
+        title: "Among Us",
+        text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        genre: ["horror", "action", "RPG"]
+    },
+    {
+        title: "Assasins Creed",
+        text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        genre: ["adventure", "RPG"]
+    },
+    {
+        title: "Assasins Creed",
+        text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        genre: ["adventure", "RPG"]
+    }
+
+]
+
 const User = () => {
     return (
         <div className="componentContainer"> 
@@ -15,7 +39,7 @@ const User = () => {
                <div className="col-md-9 col-9 user__right">
                    <div className="user__rightName">
                         <h2 className="m-5">Name (username)</h2>
-                        <button className="user__button m-5">Edit Profile</button>
+                        <button className="user__button m-5"><FeatherIcon icon="edit-2"/>Edit Profile</button>
                    </div>
                <div className="user__rightLink d-flex ml-5">
                     <a href="https://cmd.to/" className="d-flex">
@@ -39,7 +63,10 @@ const User = () => {
            </div>
            <div className="user__communities">
                <h3 className="ml-5">Your Communities</h3>
-                <UserCommunityCard/>
+               <div className="row m-5">
+               {data.map((item) =>
+                    <UserCommunityCard item={item}/>)}
+                </div>
            </div>
         </div>
         </div>

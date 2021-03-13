@@ -1,34 +1,25 @@
 import React from "react";
 import {Card} from 'react-bootstrap'
 
-function UserCommunityCard() {
+
+function UserCommunityCard(props) {
+  // console.log("hello", props.title)
   return (
-    <div className="userCommunityCard m-5 d-flex">
-      <Card className="userCommunityCard__card mr-5">
+    <div className="userCommunityCard col-lg-3 col-md-4 col-sm-6 col-12">
+      <Card className="userCommunityCard__card">
         <Card.Body>
-          <h3>Among Us</h3>
-          <Card.Subtitle className="mb-2 text-muted">
-            Card Subtitle
+          <h4 style={{height:"80px",display:"flex",alignItems:"center"}}>{props.item.title}</h4>
+          <Card.Subtitle className="text-muted d-flex">
+            {props.item.genre.map(res => 
+              <p className="mr-1 userCommunityCard__genre">{res}</p>
+            )}
           </Card.Subtitle>
-          <Card.Text className="pb-5">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+          <Card.Text className="card__text">
+            {props.item.text}
           </Card.Text>
         </Card.Body>
       </Card>
-      <Card className="userCommunityCard__card" style={{overflow:"hidden"}}>
-        <Card.Body>
-          <h3>Assasins Creed</h3>
-          <Card.Subtitle className="mb-2 text-muted">
-            Card Subtitle
-          </Card.Subtitle>
-          <Card.Text className="pb-5">
-            Some quick example text to build on the card title and make up
-            bulk of the card's content. bulk of the card's content.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </div>
+    </div> 
   );
 }
 
