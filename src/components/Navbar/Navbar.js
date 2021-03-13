@@ -6,6 +6,7 @@ import logo from "../../assets/logo.svg";
 import img from "../../pages/Home/assets/Img1.png";
 import { Link } from "react-router-dom";
 import { ExploreContext } from "../../context/ExploreContext";
+import AuthContext from '../../auth'
 
 function NavHeader() {
   const [toggle, setToggle] = useState(false);
@@ -13,7 +14,7 @@ function NavHeader() {
   const {data,setExpData} = useContext(ExploreContext);
   const [search, setSearch] = useState("");
   // console.log("navData>>>>>>>>>>>>", data);
-
+  const user = useContext(AuthContext)
   const searchClick = () => {
     setToggle(!toggle);
     if (dropdown) setDropdown(false);
@@ -97,11 +98,17 @@ function NavHeader() {
             icon="user"
             onClick={() => setDropdown(!dropdown)}
           />
-          {dropdown ? (
+          {dropdown && user.currentUser ? (
             <div className="navHeader__dropdownContent">
               <img className="mx-auto" src={img} />
-              <p>username</p>
-              <button className="">Sign in</button>
+              <p className="navbar__username">username</p>
+              <button className="">Profile</button>
+              <button className="">Sign Out</button>
+            </div>
+          ) : null}
+          {dropdown && !user.currentUser ? (
+            <div className="navHeader__dropdownContent2">
+              <button className="">Sign In/Register</button>
             </div>
           ) : null}
         </div>
