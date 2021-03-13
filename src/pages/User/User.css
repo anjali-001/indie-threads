@@ -6,6 +6,9 @@
     color: #FFFFFE;
 }
 
+.user__editIcon{
+    width: 10px;
+}
 .user__rightName{
     display: flex;
     justify-content: space-between;
@@ -67,6 +70,12 @@
     /* padding: 14px 80px 18px 36px; */
     /* text-overflow: ellipsis; */
 
+}
+
+.card__title{
+    height:80px;
+    display:flex;
+    align-items:center;
 }
 
 .card__text{

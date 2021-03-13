@@ -39,7 +39,7 @@ const User = () => {
                <div className="col-md-9 col-9 user__right">
                    <div className="user__rightName">
                         <h2 className="m-5">Name (username)</h2>
-                        <button className="user__button m-5"><FeatherIcon icon="edit-2"/>Edit Profile</button>
+                        <button className="user__button m-5"><FeatherIcon icon="edit-2" className="user__editIcon"/>Edit Profile</button>
                    </div>
                <div className="user__rightLink d-flex ml-5">
                     <a href="https://cmd.to/" className="d-flex">

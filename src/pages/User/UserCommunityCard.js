@@ -8,7 +8,7 @@ function UserCommunityCard(props) {
     <div className="userCommunityCard col-lg-3 col-md-4 col-sm-6 col-12">
       <Card className="userCommunityCard__card">
         <Card.Body>
-          <h4 style={{height:"80px",display:"flex",alignItems:"center"}}>{props.item.title}</h4>
+          <h4 className="card__title">{props.item.title}</h4>
           <Card.Subtitle className="text-muted d-flex">
             {props.item.genre.map(res => 
               <p className="mr-1 userCommunityCard__genre">{res}</p>
