@@ -1,47 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import './Explore.css'
-import getPosts from '../../constants/fire-functions/getPosts'
-import PostCard from '../../components/PostCard'
-import Filter from '../../components/Filter';
+import React, { useState, useEffect, useContext } from "react";
+import "./Explore.css";
+import getPosts from "../../constants/fire-functions/getPosts";
+import PostCard from "../../components/PostCard";
+import Filter from "../../components/Filter";
+import { ExploreContext } from "../../context/ExploreContext";
 
 const Explore = () => {
-    const [data, setData] = useState([])
+  // const [data, setData] = useState([])
+  const {exploreData} = useContext(ExploreContext);
+  console.log(exploreData);
 
-    useEffect(() => {
-        async function getData(){
-            const response = await getPosts();
-            setData(response)
-        }
-        getData();
-    }, [])
+//   useEffect(() => {
+//       console.log("reloaded")
+//   }, [exploreData])
 
-    if (data == []){
-        return( 
-        <div className="explore-container">
-            <h1>sdf</h1>
-        </div>
-        )
-    }
+  if (exploreData == []) {
     return (
-        <div className="explore componentContainer">
-            <div className="custom-container">
-            
-                <div className="row justify-content-around">
-                    <div className="col-md-8 col-8 text-light explore__left">
-                    <h1 className="explore-heading">Active Communities</h1>
-                    {data.map((post) => {
-                        return(
-                            <PostCard />
-                        )
-                    })}
-                    </div>
-                    <div className="col-md-4 filt-container">
-                        <Filter />
-                    </div>
-                </div>
-            </div>
+      <div className="explore-container text-light">
+        <h1 style={{color: 'white'}}>Empty</h1>
+      </div>
+    );
+  }
+  return (
+    <div className="explore componentContainer">
+      <div className="custom-container">
+        <div className="row justify-content-around">
+          <div className="col-md-8 col-8 text-light explore__left">
+            <h1 className="explore-heading">Active Communities</h1>
+            {exploreData.map((post) => {
+              return (
+                // console.log(post)
+                <PostCard post={post}/>
+              );
+            })}
+          </div>
+          <div className="col-md-4 filt-container">
+            <Filter />
+          </div>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
 export default Explore;

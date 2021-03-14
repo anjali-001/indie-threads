@@ -1,33 +1,34 @@
 import fire from '../../fire';
 import React, {useState, useEffect, useContext} from 'react';
-//import 'semantic-ui-css/semantic.min.css'
-
-import Menu from '../../components/Menu';
 import Login from '../../components/Login';
-import Hero from "../../components/Hero";
 import { AuthContext } from '../../auth';
-import makeUser from '../../constants/fire-functions/makeUser';
+import makeUser from '../../constants/fire-functions/makeUser'
+import { Redirect } from 'react-router-dom'
 
 import './Style.css';
 
 const App = () => {
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
+  const [username, setUsername] = useState("")
   const [user, setUser] = useState("")
   const [account, setAccount] = useState("")
   const [emailError, setEmailError] = useState("")
   const [passwordError, setPasswordError] = useState("")
+  const [redirect, setRedirect] = useState(false);
 
   const currentUser = useContext(AuthContext);
   
   const clearInputs = () => {
     setEmail("");
     setPassword("");
+    setUsername("");
   }
 
   const clearErrors = () => {
     setEmailError("");
     setPasswordError("");
+    setUsername("");
   }
 
   const handleLogin = () => {
@@ -35,6 +36,7 @@ const App = () => {
     fire
       .auth()
       .signInWithEmailAndPassword(email, password)
+      .then(() => {setRedirect(true)})
       .catch(err => {{
         switch(err.code){
           case "auth/invalid-email":
@@ -48,13 +50,16 @@ const App = () => {
         }
       }})
   }
-
   const handleSignUp = () => {
     clearErrors();
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then((res) => {makeUser(res.user.email, res.user.email, res.user.uid)})
+      .then((res) => {
+        makeUser(username, res.user.email, res.user.uid)
+        setRedirect(true)
+        
+      })
       .catch((err) => {
         switch(err.code){
           case "auth/email-already-in-use":
@@ -87,23 +92,11 @@ const App = () => {
     authListener();
   }, [])
 
-
+  if (redirect) return <Redirect to='/explore' />
   return (
-    <div className="App">
-      { user ? (
-        <>
-          <Hero handleLogout={handleLogout}/>
-          <Menu />
-        </>
-      ) : 
-      (
-        <>
-        <Login email={email} setEmail={setEmail} password={password} setPassword={setPassword} handleLogin={handleLogin} handleSignUp={handleSignUp} account={account} setAccount={setAccount} emailError={emailError} passwordError={passwordError}>
-        </Login>
-        </>
-      )}
-      
-      
+    <div className="login-container">
+      <Login username={username} setUsername={setUsername} email={email} setEmail={setEmail} password={password} setPassword={setPassword} handleLogin={handleLogin} handleSignUp={handleSignUp} account={account} setAccount={setAccount} emailError={emailError} passwordError={passwordError}>
+      </Login>
     </div>
   );
 }
