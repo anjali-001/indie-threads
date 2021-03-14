@@ -7,6 +7,7 @@ import img from "../../pages/Home/assets/Img1.png";
 import { Link } from "react-router-dom";
 import { ExploreContext } from "../../context/ExploreContext";
 import AuthContext from '../../auth'
+import fire from '../../fire'
 
 function NavHeader() {
   const [toggle, setToggle] = useState(false);
@@ -103,12 +104,12 @@ function NavHeader() {
               <img className="mx-auto" src={img} />
               <p className="navbar__username">username</p>
               <button className="">Profile</button>
-              <button className="">Sign Out</button>
+              <button className="" onClick={(e) => {e.preventDefault(); fire.auth().signOut()}}>Sign Out</button>
             </div>
           ) : null}
           {dropdown && !user.currentUser ? (
             <div className="navHeader__dropdownContent2">
-              <button className="">Sign In/Register</button>
+              <Link className="" to="/login">Sign In/Register</Link>
             </div>
           ) : null}
         </div>

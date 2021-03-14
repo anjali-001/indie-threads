@@ -3,12 +3,12 @@ import React from 'react';
 
 const Login = (props) => {
 
-    const { email, setEmail, password, setPassword, handleLogin, handleSignUp, account, setAccount, emailError, passwordError } = props
+    const { username, setUsername, email, setEmail, password, setPassword, handleLogin, handleSignUp, account, setAccount, emailError, passwordError } = props
 
     return (
         <section className="login">
             <div className="loginContainer">
-                <label>Username</label>
+                <label>Email</label>
                 <input type="text"
                     autoFocus
                     required
@@ -16,6 +16,21 @@ const Login = (props) => {
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <p className="errorMsg">{emailError}</p>
+                {account ? 
+                    null
+                    : ( 
+                    <div>
+                        <label>Username</label>
+                    <input type="text"
+                        autoFocus
+                        required
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                    </div>
+                    )
+                }
+                <p className="errorMsg"></p>
                 <label>Password</label>
                 <input
                     type="password"
