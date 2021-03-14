@@ -40,6 +40,9 @@ const Comment = (props) => {
         <div className="comment">
             <div className="game-icon" />
             <div className="comment-text">
+                <div className="comment-header">
+                    {props.user_name}
+                </div>
                 {props.value}
             </div>
         </div>
@@ -220,7 +223,7 @@ const Community = (props) => {
                         {/* <Comment value="hello world"/>
                         <Comment value="quick brown fox jumps over the lazy dog"/>
                         <Comment value="hello world"/> */}
-                        {messages && messages.map(msg => <Comment key={msg.id} value={msg.text} />)}
+                        {messages && messages.map(msg => <Comment key={msg.id} value={msg.text} user_name={msg.author}/>)}
 
                         <span ref={dummy}></span>
 
