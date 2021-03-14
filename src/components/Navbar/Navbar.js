@@ -7,6 +7,7 @@ import img from "../../pages/Home/assets/Img1.png";
 import { Link } from "react-router-dom";
 import { ExploreContext } from "../../context/ExploreContext";
 import AuthContext from '../../auth'
+import getUser from '../../constants/fire-functions/getUser'
 import fire from '../../fire'
 
 function NavHeader() {
@@ -14,6 +15,8 @@ function NavHeader() {
   const [dropdown, setDropdown] = useState(false);
   const {data,setExpData} = useContext(ExploreContext);
   const [search, setSearch] = useState("");
+  const [loadingUser, setLoadingUser] = useState(true)
+  const [username, setUsername] = useState("");
   // console.log("navData>>>>>>>>>>>>", data);
   const user = useContext(AuthContext)
   const searchClick = () => {
@@ -28,6 +31,16 @@ function NavHeader() {
   useEffect(() => {
     filterCards()
   }, [search])
+
+  useEffect(() => {
+    const getUsername = async () => {
+      const user = await getUser();
+      setUsername(user.username);
+      setLoadingUser(false);
+    }
+
+    getUsername();
+  }, [])
 
   const filterCards = () => {
     // console.log(search)
@@ -102,7 +115,7 @@ function NavHeader() {
           {dropdown && user.currentUser ? (
             <div className="navHeader__dropdownContent">
               <img className="mx-auto" src={img} />
-              <p className="navbar__username">username</p>
+              {loadingUser == true ? <p className="navbar__username">Loading...</p> :  <p className="navbar__username">{username}</p>}
               <button className="">Profile</button>
               <button className="" onClick={(e) => {e.preventDefault(); fire.auth().signOut()}}>Sign Out</button>
             </div>
