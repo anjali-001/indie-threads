@@ -1,9 +1,11 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState, useEffect, useRef} from 'react';
+
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import fire from '../../fire';
 import firebase from 'firebase'
 import { AuthContext } from '../../auth';
-import getPosts from '../../constants/fire-functions/getPosts';
 import './Community.css';
 
 const TAG2COLORS = {
@@ -45,9 +47,21 @@ const Comment = (props) => {
 }
 
 const Community = (props) => {
+
     const currentUser = useContext(AuthContext);
     const [formValue, setFormValue] = useState('');
     const [user, setUser] = useState(null);
+
+    const dummy = useRef();
+    const commentsRef = fire.firestore().collection("comments");
+    const query = commentsRef.orderBy("createdAt").where('gameId', '==', props.location.props.gameId);
+    console.log(
+        "Messages", useCollectionData(query)
+    )
+    const [messages] = useCollectionData(
+        query, 
+        { idField: 'id' }
+    );
 
     useEffect(() => {
         const userRef = fire.firestore().collection("posts");
@@ -82,10 +96,37 @@ const Community = (props) => {
         )
     }
 
-    console.log('user data: ',user.systemRequirements.split(';'))
+
+    // console.log("Messages", query)
+  const sendMessage = async (e) => {
+        e.preventDefault();
+
+        const { uid, photoURL } = currentUser.currentUser;
+        console.log('UID: ', {
+            text: formValue,
+            replyTo: "",
+            gameId:props.location.props.gameId,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            author:currentUser.currentUser.email,
+            userId: uid 
+        })
+
+        await commentsRef.add({
+            text: formValue,
+            replyTo: "",
+            gameId:props.location.props.gameId,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            author:currentUser.currentUser.email,
+            userId: uid 
+        })
+
+        setFormValue('');
+        dummy.current.scrollIntoView({ behavior: 'smooth' });
+    }
+
     const sysReq = user.systemRequirements.split(';').map((value) => {
         return(
-            <div className="info-details">
+            <div className="info-details" key={value.trim()}>
                 {value.trim()}
             </div>
         )
@@ -162,7 +203,7 @@ const Community = (props) => {
                             </svg>
 
                         </div>
-                        <form>
+                        <form onSubmit={sendMessage}>
                             <button type="submit" disabled={!formValue}>
                                 <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M34.0001 1L15.8501 19.15"  stroke="#94A1B2" strokeWidth="2"    strokeLinecap="round" strokeLinejoin="round"/>
@@ -176,9 +217,12 @@ const Community = (props) => {
 
                     <div className="comments">
                         
-                        <Comment value="hello world"/>
+                        {/* <Comment value="hello world"/>
                         <Comment value="quick brown fox jumps over the lazy dog"/>
-                        <Comment value="hello world"/>
+                        <Comment value="hello world"/> */}
+                        {messages && messages.map(msg => <Comment key={msg.id} value={msg.text} />)}
+
+                        <span ref={dummy}></span>
 
                     </div>
                 </div>                
