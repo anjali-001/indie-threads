@@ -6,6 +6,7 @@ export const ExploreContext = createContext();
 export const ExploreProvider = (props) => {
     const [data, setData] = useState([])
     const [exploreData,setExploreData] = useState([])
+    const [filterData,setFilterData] = useState([])
     console.log('val>>>',getPosts())
 
     useEffect(() => {
@@ -19,10 +20,15 @@ export const ExploreProvider = (props) => {
     const setExpData=(data)=>{
         setExploreData(data)
     }
-    // console.log('data new>>',data);
-    // console.log(exploreData)
+    const setFilData =(data)=>{
+        setFilterData(data)
+    }
+    const copyExpData = exploreData; //test
+    console.log('data new>>',data);
+    console.log(exploreData)
+    console.log(copyExpData)
     return(
-        <ExploreContext.Provider value={{data:data, exploreData:exploreData,setExpData:setExpData}}>
+        <ExploreContext.Provider value={{data:data, exploreData:exploreData,setExpData:setExpData, filterData:filterData, setFilData:setFilData}}>
         {/* <ExploreContext.Provider value={[data,setData, exploreData, setExploreData]}> */}
             {props.children}
         </ExploreContext.Provider>

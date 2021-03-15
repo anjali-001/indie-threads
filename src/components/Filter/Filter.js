@@ -7,16 +7,20 @@ import filter_icon from '../../assets/filter.png'
 
 const Filter = () => {
 
-    const {data,setExpData} = useContext(ExploreContext);
+    const {filterData, exploreData, data,setExpData} = useContext(ExploreContext);
 
     const examples = ["Horror", "Comedy", "Action", "Indie", "Adventure", "Thrilling"]
 
     const filterGenre = (val) => {
-
+        //data-> search ->explore -> explorecopy  -> thrilling -> exloredata
+        //explore=explorecopy;
+        //FILTER THRILLING
+        //explore=explorecopy;
+        //filter adventure
         console.log(val);
         console.log(data);
         let arr = [];
-        data.filter((item) => {
+        filterData.filter((item) => {
           if(item.genre.filter(post => 
             {
               if(post.toLowerCase().includes(val.toLowerCase()))

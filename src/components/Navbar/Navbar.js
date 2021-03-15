@@ -11,7 +11,7 @@ import AuthContext from '../../auth'
 function NavHeader() {
   const [toggle, setToggle] = useState(false);
   const [dropdown, setDropdown] = useState(false);
-  const {data,setExpData} = useContext(ExploreContext);
+  const {data,setExpData,setFilData} = useContext(ExploreContext);
   const [search, setSearch] = useState("");
   // console.log("navData>>>>>>>>>>>>", data);
   const user = useContext(AuthContext)
@@ -43,6 +43,7 @@ function NavHeader() {
     });
     console.log(arr)
     setExpData(arr)
+    setFilData(arr)
   };
 
   return (
