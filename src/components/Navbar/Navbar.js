@@ -19,6 +19,7 @@ function NavHeader() {
   const [username, setUsername] = useState("");
   // console.log("navData>>>>>>>>>>>>", data);
   const user = useContext(AuthContext)
+
   const searchClick = () => {
     setToggle(!toggle);
     if (dropdown) setDropdown(false);
@@ -34,9 +35,13 @@ function NavHeader() {
 
   useEffect(() => {
     const getUsername = async () => {
-      const user = await getUser();
-      setUsername(user.username);
-      setLoadingUser(false);
+      // const user = await getUser();
+      
+      if(user.currentUser !== null){
+        console.log('navbar comp -> user: ', user)
+        setUsername(user.currentUser.email);
+        setLoadingUser(false);
+      }
     }
 
     getUsername();

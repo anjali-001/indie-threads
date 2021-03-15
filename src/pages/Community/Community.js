@@ -54,12 +54,13 @@ const Community = (props) => {
     const currentUser = useContext(AuthContext);
     const [formValue, setFormValue] = useState('');
     const [user, setUser] = useState(null);
+    const [authStatus, setauthStatus] = useState(false);
 
     const dummy = useRef();
     const commentsRef = fire.firestore().collection("comments");
     const query = commentsRef.orderBy("createdAt").where('gameId', '==', props.location.props.gameId);
     console.log(
-        "Messages", useCollectionData(query)
+        "auth status: ", currentUser
     )
     const [messages] = useCollectionData(
         query, 
@@ -67,6 +68,12 @@ const Community = (props) => {
     );
 
     useEffect(() => {
+        if(currentUser.currentUser !== null){
+            setauthStatus(true);
+        }else{
+            setauthStatus(false);
+        }
+
         const userRef = fire.firestore().collection("posts");
         const userdata = async () => {
             const data = await userRef.get()
@@ -76,7 +83,8 @@ const Community = (props) => {
                     setUser(doc.data());
                 }
                 
-            });          
+            }); 
+
     
         };
         userdata();
@@ -140,6 +148,8 @@ const Community = (props) => {
             <Tag key={value} value={value} />
         )
     })
+
+    console.log("Disable", !authStatus);
     
     return (
         <>
@@ -194,7 +204,7 @@ const Community = (props) => {
                     </div>
 
                 </div>
-
+                
                 <div className="comments-section">
                     <div className="create-comment">
                         <div className="create-button">
@@ -213,7 +223,7 @@ const Community = (props) => {
                                     <path d="M34 1L22.45 34L15.85 19.15L1 12.55L34 1Z" stroke="#94A1B2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
                             </button>
-                            <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="Start a discussion" />
+                            <input value={formValue} disabled={!authStatus} onChange={(e) => setFormValue(e.target.value)} placeholder="Start a discussion" />
                         </form>
                     </div>
                     
