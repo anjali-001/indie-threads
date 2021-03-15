@@ -108,7 +108,6 @@ const Community = (props) => {
     }
 
 
-    // console.log("Messages", query)
   const sendMessage = async (e) => {
         e.preventDefault();
 

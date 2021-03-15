@@ -17,7 +17,8 @@ function NavHeader() {
   const [search, setSearch] = useState("");
   const [loadingUser, setLoadingUser] = useState(true)
   const [username, setUsername] = useState("");
-  const user = useContext(AuthContext)
+  // console.log("navData>>>>>>>>>>>>", data);
+  const user = useContext(AuthContext);
 
   const searchClick = () => {
     setToggle(!toggle);
