@@ -9,7 +9,7 @@ const Filter = () => {
 
     const {data,setExpData} = useContext(ExploreContext);
 
-    const examples = ["Horror", "Comedy", "Action", "Adventure", "Thrilling"]
+    const examples = ["Horror", "Comedy", "Action", "Indie", "Adventure", "Thrilling"]
 
     const filterGenre = (val) => {
 
