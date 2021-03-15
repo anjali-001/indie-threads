@@ -10,13 +10,13 @@ function HomeImageContainer() {
     return (
         <div className="row home__imageContainer">
         <div className="col-md-5 d-flex justify-content-end">
-          <Link to={{
+          <Link className="imageContainer__img" to={{
             pathname:"/game",
             props:{
               gameId:"c8sEokqTer2hZdLt8IUW"
             }
           }}>
-            <img src={img1} alt="" />
+            <img src={img1} style={{width:"100%", height:"100%"}} alt="" />
           </Link>
         </div>
         <div className="col-md-7">
