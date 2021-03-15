@@ -4,10 +4,14 @@ import getPosts from "../../constants/fire-functions/getPosts";
 import PostCard from "../../components/PostCard";
 import Filter from "../../components/Filter";
 import { ExploreContext } from "../../context/ExploreContext";
+import buttonIcon from '../../assets/button.png'
+import { Link } from "react-router-dom";
+import AuthContext from '../../auth'
 
 const Explore = () => {
   // const [data, setData] = useState([])
   const {exploreData} = useContext(ExploreContext);
+  const user = useContext(AuthContext)
   console.log(exploreData);
 
 //   useEffect(() => {
@@ -36,6 +40,15 @@ const Explore = () => {
           </div>
           <div className="col-md-4 filt-container">
             <Filter />
+            {user.currentUser ? 
+            <Link className="create" to="/post">
+              <img className="create" src={buttonIcon} />
+            </Link>
+            :
+            <Link className="create" to="/login">
+              <img className="create" src={buttonIcon} />
+            </Link>
+            }
           </div>
         </div>
       </div>
