@@ -15,7 +15,7 @@ const addPost = async (content, genre, requirements) => {
             posts = doc.data().posts;
              var updatedPosts = [...posts]
              updatedPosts.push(docRef)
-             console.log(updatedPosts)
+            //  console.log(updatedPosts)
             fire.firestore().collection("users").doc(uid).update({
                 posts: updatedPosts
             })

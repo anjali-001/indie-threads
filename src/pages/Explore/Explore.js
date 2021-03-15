@@ -8,7 +8,7 @@ import { ExploreContext } from "../../context/ExploreContext";
 const Explore = () => {
   // const [data, setData] = useState([])
   const {exploreData} = useContext(ExploreContext);
-  console.log(exploreData);
+  // console.log(exploreData);
 
 //   useEffect(() => {
 //       console.log("reloaded")

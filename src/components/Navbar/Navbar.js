@@ -18,7 +18,7 @@ function NavHeader() {
   const [loadingUser, setLoadingUser] = useState(true)
   const [username, setUsername] = useState("");
   // console.log("navData>>>>>>>>>>>>", data);
-  const user = useContext(AuthContext)
+  const user = useContext(AuthContext);
 
   const searchClick = () => {
     setToggle(!toggle);
@@ -36,8 +36,8 @@ function NavHeader() {
   useEffect(() => {
     const getUsername = async () => {
       // const user = await getUser();
-      
-      if(user.currentUser !== null){
+      console.log('Navbar component: ',user)
+      if(user.currentUser != null){
         console.log('navbar comp -> user: ', user)
         setUsername(user.currentUser.email);
         setLoadingUser(false);
@@ -51,6 +51,7 @@ function NavHeader() {
     // console.log(search)
     let arr=[];
     data.filter((item) => {
+      console.log('Item: ', item)
       if(item['title'].toLowerCase().includes(search.toLowerCase()))
         arr.push(item);
       else if(item.genre.filter(post => 
