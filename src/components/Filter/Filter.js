@@ -1,4 +1,6 @@
+
 import React, {useContext} from 'react'
+
 import './Filter.css'
 import { ExploreContext } from "../../context/ExploreContext";
 
