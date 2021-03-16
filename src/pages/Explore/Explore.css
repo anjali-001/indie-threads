@@ -47,3 +47,11 @@ div{
     color: #FFFFFE;
     padding-bottom: 15px;
 }
+
+.create{
+    height: 80px;
+    width: 80px;
+    align-self: center;
+    margin-top: 50px;
+    cursor: pointer;
+}
