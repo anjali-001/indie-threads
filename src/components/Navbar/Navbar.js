@@ -35,10 +35,8 @@ function NavHeader() {
 
   useEffect(() => {
     const getUsername = async () => {
-      // const user = await getUser();
-      console.log('Navbar component: ',user)
-      if(user.currentUser != null){
-        console.log('navbar comp -> user: ', user)
+
+      if(user.currentUser !== null){
         setUsername(user.currentUser.email);
         setLoadingUser(false);
       }
@@ -48,10 +46,9 @@ function NavHeader() {
   }, [])
 
   const filterCards = () => {
-    // console.log(search)
     let arr=[];
     data.filter((item) => {
-      console.log('Item: ', item)
+      console.log(item.title)
       if(item['title'].toLowerCase().includes(search.toLowerCase()))
         arr.push(item);
       else if(item.genre.filter(post => 
