@@ -1,4 +1,4 @@
-import react from 'react'
+import React from 'react';
 import './Filter.css'
 
 import filter_icon from '../../assets/filter.png'

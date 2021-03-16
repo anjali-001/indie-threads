@@ -18,7 +18,8 @@ function NavHeader() {
   const [loadingUser, setLoadingUser] = useState(true)
   const [username, setUsername] = useState("");
   // console.log("navData>>>>>>>>>>>>", data);
-  const user = useContext(AuthContext)
+  const user = useContext(AuthContext);
+
   const searchClick = () => {
     setToggle(!toggle);
     if (dropdown) setDropdown(false);
@@ -34,18 +35,20 @@ function NavHeader() {
 
   useEffect(() => {
     const getUsername = async () => {
-      const user = await getUser();
-      setUsername(user.username);
-      setLoadingUser(false);
+
+      if(user.currentUser !== null){
+        setUsername(user.currentUser.email);
+        setLoadingUser(false);
+      }
     }
 
     getUsername();
   }, [])
 
   const filterCards = () => {
-    // console.log(search)
     let arr=[];
     data.filter((item) => {
+      console.log(item.title)
       if(item['title'].toLowerCase().includes(search.toLowerCase()))
         arr.push(item);
       else if(item.genre.filter(post => 
