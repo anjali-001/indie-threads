@@ -13,7 +13,7 @@ import fire from '../../fire'
 function NavHeader() {
   const [toggle, setToggle] = useState(false);
   const [dropdown, setDropdown] = useState(false);
-  const {data,setExpData} = useContext(ExploreContext);
+  const {data,setExpData,setFilData} = useContext(ExploreContext);
   const [search, setSearch] = useState("");
   const [loadingUser, setLoadingUser] = useState(true)
   const [username, setUsername] = useState("");
@@ -60,6 +60,7 @@ function NavHeader() {
     });
     console.log(arr)
     setExpData(arr)
+    setFilData(arr)
   };
 
   return (
