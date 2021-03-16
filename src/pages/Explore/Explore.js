@@ -11,6 +11,7 @@ import AuthContext from '../../auth'
 const Explore = () => {
   // const [data, setData] = useState([])
   const {exploreData} = useContext(ExploreContext);
+  const { currentUser } = useContext(AuthContext); 
   // console.log(exploreData);
 
 //   useEffect(() => {
@@ -39,7 +40,7 @@ const Explore = () => {
           </div>
           <div className="col-md-4 filt-container">
             <Filter />
-            {user.currentUser ? 
+            {currentUser ? 
             <Link className="create" to="/post">
               <img className="create" src={buttonIcon} />
             </Link>

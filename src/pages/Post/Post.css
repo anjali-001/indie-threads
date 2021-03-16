@@ -74,6 +74,7 @@
     letter-spacing: 1px;
     font-family: Poppins, sans-serif;
     overflow: hidden;
+    border-radius: 20px;
   }
   
   .post-section .postForm .btnContainer button{
