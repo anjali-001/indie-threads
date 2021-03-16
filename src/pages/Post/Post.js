@@ -3,6 +3,8 @@ import './Post.css'
 import InputField from '../../components/InputField'
 import { useState } from 'react'
 import { fromPromise } from 'apollo-link'
+import addPost from '../../constants/fire-functions/addPost'
+import { Redirect } from 'react-router'
 
 const Post = () => {
     const [title, settitle] = useState("")
@@ -15,7 +17,18 @@ const Post = () => {
     const [pictures, setpictures] = useState("")
     const [sysReq, setSysReq] = useState("")
     const [platforms, setPlatforms] = useState("")
+    const [posted, setPosted] = useState(false)
 
+
+    const submitPost = async (e) => {
+        e.preventDefault();
+        addPost(title, desc, genre.split(","), 
+                developer, relDate, link, video, pictures.split("\n"),
+                sysReq, platforms).then((resp) => {
+                    setPosted(true)
+                })
+    }
+    if (posted) return <Redirect to="/explore"/>
     return(
         <div className="post-container">
              <section className="post-section">
@@ -50,7 +63,7 @@ const Post = () => {
                     onChange={(e) => setPlatforms(e.target.value)}
                 />
                 <div className="btnContainer">
-                    <button>Post!</button>
+                    <button onClick={(e) => submitPost(e)}>Post!</button>
                 </div>
             </div>
              </section>
