@@ -1,12 +1,38 @@
-import react from 'react'
+
+import React, {useContext} from 'react'
+
 import './Filter.css'
+import { ExploreContext } from "../../context/ExploreContext";
+
 
 import filter_icon from '../../assets/filter.png'
 
 const Filter = () => {
 
-    const examples = ["Horror", "Comedy", "Action", "Adventure", "Thrilling"]
+    const {filterData, exploreData, data,setExpData} = useContext(ExploreContext);
 
+    const examples = ["Horror", "Comedy", "Action", "Indie", "Adventure", "Thrilling"]
+
+    const filterGenre = (val) => {
+        //data-> search ->explore -> explorecopy  -> thrilling -> exloredata
+        //explore=explorecopy;
+        //FILTER THRILLING
+        //explore=explorecopy;
+        //filter adventure
+        console.log(val);
+        console.log(data);
+        let arr = [];
+        filterData.filter((item) => {
+          if(item.genre.filter(post => 
+            {
+              if(post.toLowerCase().includes(val.toLowerCase()))
+              arr.push(item);
+            }
+          ));
+        });
+        console.log(arr)
+        setExpData(arr)
+    }
 
     return(
         <div className="filter-container">
@@ -17,7 +43,7 @@ const Filter = () => {
             <div className="all-filter">
                 {examples.map((genre) => {
                     return(
-                        <a className="filter-genre">{genre}</a>
+                        <div className="filter-genre" onClick={() => filterGenre(genre)}>{genre}</div>
                     )
                 })}
             </div>

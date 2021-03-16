@@ -11,8 +11,7 @@ import AuthContext from '../../auth'
 const Explore = () => {
   // const [data, setData] = useState([])
   const {exploreData} = useContext(ExploreContext);
-  const user = useContext(AuthContext)
-  console.log(exploreData);
+  // console.log(exploreData);
 
 //   useEffect(() => {
 //       console.log("reloaded")
