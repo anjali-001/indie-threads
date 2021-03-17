@@ -21,12 +21,35 @@ const Login = (props) => {
                     : ( 
                     <div>
                         <label>Username</label>
-                    <input type="text"
-                        autoFocus
-                        required
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
+                        <input type="text"
+                            autoFocus
+                            required
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                        <p className="errorMsg"></p>
+                        <label>Bio</label>
+                        <textarea type="text"
+                            autoFocus
+                            required
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                        <label>Interests (Separate with commas)</label>
+                        <textarea type="text"
+                            autoFocus
+                            required
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                        <p className="errorMsg"></p>
+                        <label>Website</label>
+                        <input type="text"
+                            autoFocus
+                            required
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
                     </div>
                     )
                 }
