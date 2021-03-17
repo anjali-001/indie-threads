@@ -9,14 +9,10 @@ import { Link } from "react-router-dom";
 import AuthContext from '../../auth'
 
 const Explore = () => {
-  // const [data, setData] = useState([])
+
   const {exploreData} = useContext(ExploreContext);
   const { currentUser } = useContext(AuthContext); 
-  // console.log(exploreData);
 
-//   useEffect(() => {
-//       console.log("reloaded")
-//   }, [exploreData])
 
   if (exploreData == []) {
     return (

@@ -32,19 +32,32 @@ div{
     margin: auto;
 }
 
-.home__filter{
+/* .home__filter{
     list-style: none;
-}
+} */
 
-.home__filter li:hover{
+/* .home__filter li:hover{
     color: #2CB67D;
     cursor: pointer;
-}
+} */
 .seperator{
     padding-top: 45px;
     padding-bottom: 20px;
 }
 
-.imageContainer__img{
-    
+.home__filterOptions{
+    color: #FFFFFE;
+    text-decoration: none;
+    list-style: none;
+}
+
+.home__filterOptions:hover{
+    text-decoration: none;
+    list-style: none;
+    color: #2CB67D;
+    transition: color 0.2s ease-in;
+}
+
+.home__filterContainer:hover{
+    text-decoration: none;
 }
