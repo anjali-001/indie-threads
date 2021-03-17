@@ -6,8 +6,8 @@ const InputField = (props) => {
         <>
         <label>{props.name}</label>
         <input type="text"
-            autoFocus
             required
+            autoFocus={props.autofocus}
             onChange={(e) => props.setField(e.target.value)}
         />
         </>
