@@ -4,12 +4,19 @@
     width: 831px;
     height: 249px;
     background: #242447;
-    box-shadow: 4px 4px 10px #5A5A77;
+    /* box-shadow: 4px 4px 10px #5A5A77; */
+    box-shadow: 0 6px 10px #5A5A77, 0 0 6px #5A5A77;
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
     border-radius: 36px;
     margin-bottom: 60px;
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.card-container:hover{
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px #393950, 0 4px 8px #393950;
 }
 
 .card-img{
