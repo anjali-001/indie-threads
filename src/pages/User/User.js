@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import firebase from 'firebase'
+import fire from '../../fire'
 import './User.css';
 import img from '../Home/assets/Img3.png'
 import FeatherIcon from "feather-icons-react";
@@ -28,7 +30,50 @@ const data=[
 
 ]
 
-const User = () => {
+const User = ({ match, location }) => {
+
+    const [userData, setuserData] = useState()
+    const [postData, setPostData] = useState([])
+    const [loadingPosts, setLoadingPosts] = useState(true)
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        
+        const getUserInfo = async () => {
+            var userUID = await firebase.auth();
+            userUID = userUID.currentUser.uid
+            var result = null;
+            var docRef = await fire.firestore().collection("users").doc(userUID);
+            await docRef.get().then((doc) => {
+                result = doc.data();
+                setuserData(result)
+                setLoading(false)
+                
+            }).catch((error) => {
+                console.log("User doesn't exist!", error);
+            })
+        }
+
+        getUserInfo();
+        
+    }, [])
+
+    function Posts(props) {
+        if (loading){
+            return <h1>sdf</h1>
+        }
+        console.log(userData)
+        return(
+            userData.posts.foreach((post) => {
+                return(
+                    <UserCommunityCard item={post}/>
+                )
+            })
+        )
+    }
+    
+    
+
     return (
         <div className="componentContainer"> 
         <div className="custom-container user">
@@ -38,7 +83,7 @@ const User = () => {
                </div>
                <div className="col-md-9 col-9 user__right">
                    <div className="user__rightName">
-                        <h2 className="m-5">Name (username)</h2>
+                        <h2 className="m-5">{loading ? "Loading" : userData.username}</h2>
                         <button className="user__button m-5"><FeatherIcon icon="edit-2" className="user__editIcon pr-1"/>Edit Profile</button>
                    </div>
                <div className="user__rightLink d-flex ml-5">
@@ -64,8 +109,7 @@ const User = () => {
            <div className="user__communities">
                <h3 className="ml-5">Your Communities</h3>
                <div className="row m-5">
-               {data.map((item) =>
-                    <UserCommunityCard item={item}/>)}
+               <Posts />
                 </div>
            </div>
         </div>
