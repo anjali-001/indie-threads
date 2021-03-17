@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import firebase from 'firebase'
+import React, { useEffect, useState, useContext } from 'react'
+import AuthContext from '../../auth'
+import getUser from '../../constants/fire-functions/getUser'
 import fire from '../../fire'
 import './User.css';
 import img from '../Home/assets/Img3.png'
@@ -36,43 +37,29 @@ const User = ({ match, location }) => {
     const [postData, setPostData] = useState([])
     const [loadingPosts, setLoadingPosts] = useState(true)
     const [loading, setLoading] = useState(true)
+    const { currentUser } = useContext(AuthContext);
 
     useEffect(() => {
         
         const getUserInfo = async () => {
-            var userUID = await firebase.auth();
-            userUID = userUID.currentUser.uid
-            var result = null;
-            var docRef = await fire.firestore().collection("users").doc(userUID);
-            await docRef.get().then((doc) => {
-                result = doc.data();
-                setuserData(result)
-                setLoading(false)
-                
-            }).catch((error) => {
-                console.log("User doesn't exist!", error);
-            })
+            const userInfo = await getUser();
+            setuserData(userInfo);
+            setLoading(false)
+            
         }
 
-        getUserInfo();
+        const getPosts = async () => {
+            const docs = await fire.firestore().collection("posts").where('author', "==", "users/" + userData.uid).get();
+            setPostData(docs)
+            console.log(postData)
+            setLoadingPosts(false)
+        }
         
+        getUserInfo().then(() => {
+            getPosts()
+        })
     }, [])
 
-    function Posts(props) {
-        if (loading){
-            return <h1>sdf</h1>
-        }
-        console.log(userData)
-        return(
-            userData.posts.foreach((post) => {
-                return(
-                    <UserCommunityCard item={post}/>
-                )
-            })
-        )
-    }
-    
-    
 
     return (
         <div className="componentContainer"> 
@@ -109,7 +96,14 @@ const User = ({ match, location }) => {
            <div className="user__communities">
                <h3 className="ml-5">Your Communities</h3>
                <div className="row m-5">
-               <Posts />
+                   {loadingPosts ? 
+                   <h1>Loading</h1>
+                :
+                postData.docs.map((post) => {
+                    return(
+                        <UserCommunityCard item={post.id}/>
+                    )
+                })}
                 </div>
            </div>
         </div>

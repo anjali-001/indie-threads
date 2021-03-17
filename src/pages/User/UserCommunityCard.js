@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Card} from 'react-bootstrap'
 import firebase from 'firebase'
+import fire from '../../fire'
 
 function UserCommunityCard(props) {
 
@@ -9,14 +10,15 @@ function UserCommunityCard(props) {
   
   useEffect(() => {
       const getData = async () => {
-        const data = await props.item.get();
+        const data = await fire.firestore().collection("posts").doc(props.item.id).get();
         setdata(data)
+        console.log(data)
       }
 
       getData()
   }, [])
 
-  console.log(data)
+  
 
   return (
     <div className="userCommunityCard col-lg-3 col-md-4 col-sm-6 col-12">
@@ -24,7 +26,7 @@ function UserCommunityCard(props) {
         <Card.Body>
           <h4 className="card__title">{loading ? "hi" : "sdf"}</h4>
           <Card.Subtitle className="text-muted d-flex">
-            {props.item.genre.map(res => 
+            {data.genre.map(res => 
               <p className="mr-1 userCommunityCard__genre">sdfsdf</p>
             )}
           </Card.Subtitle>
