@@ -9,13 +9,11 @@ function UserCommunityCard(props) {
   const [loading, setLoading] = useState(true)
   
   useEffect(() => {
-      const getData = async () => {
-        const data = await fire.firestore().collection("posts").doc(props.item.id).get();
+      // const getData = async () => {
+        const data = fire.firestore().collection("posts").doc(props.item.id).get();
         setdata(data)
         console.log(data)
-      }
-
-      getData()
+      // }
   }, [])
 
   

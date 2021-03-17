@@ -37,27 +37,18 @@ const User = ({ match, location }) => {
     const [postData, setPostData] = useState([])
     const [loadingPosts, setLoadingPosts] = useState(true)
     const [loading, setLoading] = useState(true)
-    const { currentUser } = useContext(AuthContext);
+    const currentUser = useContext(AuthContext);
 
     useEffect(() => {
-        
-        const getUserInfo = async () => {
-            const userInfo = await getUser();
-            setuserData(userInfo);
-            setLoading(false)
-            
-        }
-
+        console.log(currentUser.currentUser)
         const getPosts = async () => {
-            const docs = await fire.firestore().collection("posts").where('author', "==", "users/" + userData.uid).get();
+            const docs = await fire.firestore().collection("posts").where('author', "==", "users/" + currentUser.currentUser.uid).get();
             setPostData(docs)
             console.log(postData)
             setLoadingPosts(false)
         }
         
-        getUserInfo().then(() => {
-            getPosts()
-        })
+        getPosts();
     }, [])
 
 
