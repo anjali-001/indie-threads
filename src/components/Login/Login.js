@@ -3,7 +3,7 @@ import React from 'react';
 
 const Login = (props) => {
 
-    const { username, setUsername, email, setEmail, password, setPassword, handleLogin, handleSignUp, account, setAccount, emailError, passwordError } = props
+    const { bio, setBio, link, setLink, interests, setInterests, username, setUsername, email, setEmail, password, setPassword, handleLogin, handleSignUp, account, setAccount, emailError, passwordError } = props
 
     return (
         <section className="login">
@@ -32,23 +32,23 @@ const Login = (props) => {
                         <textarea type="text"
                             autoFocus
                             required
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            value={bio}
+                            onChange={(e) => setBio(e.target.value)}
                         />
                         <label>Interests (Separate with commas)</label>
                         <textarea type="text"
                             autoFocus
                             required
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            value={interests}
+                            onChange={(e) => setInterests(e.target.value)}
                         />
                         <p className="errorMsg"></p>
                         <label>Website</label>
                         <input type="text"
                             autoFocus
                             required
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            value={link}
+                            onChange={(e) => setLink(e.target.value)}
                         />
                     </div>
                     )
