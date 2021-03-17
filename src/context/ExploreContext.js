@@ -14,6 +14,7 @@ export const ExploreProvider = (props) => {
             const response = await getPosts();
             setData(response)
             setExploreData(response)
+            setFilData(response)
         }
         getData();
     }, [])

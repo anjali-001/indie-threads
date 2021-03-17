@@ -42,11 +42,11 @@ const Explore = () => {
             <Filter />
             {currentUser ? 
             <Link className="create" to="/post">
-              <img className="create" src={buttonIcon} />
+              <img className="button-fixed" src={buttonIcon} />
             </Link>
             :
             <Link className="create" to="/login">
-              <img className="create" src={buttonIcon} />
+              <img className="button-fixed" src={buttonIcon} />
             </Link>
             }
           </div>

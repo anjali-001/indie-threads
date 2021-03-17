@@ -49,9 +49,25 @@ div{
 }
 
 .create{
+    margin-right: 60px;
+    margin-top: 20px;
+    margin-left: auto;
+    position: fixed;
+    bottom: 25px;
+    right: 10%;
+} 
+
+.create img {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+   
+}
+
+/* .create{
     height: 80px;
     width: 80px;
     align-self: center;
     margin-top: 50px;
     cursor: pointer;
-}
+} */
