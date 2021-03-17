@@ -4,7 +4,7 @@ import getPosts from "../../constants/fire-functions/getPosts";
 import PostCard from "../../components/PostCard";
 import Filter from "../../components/Filter";
 import { ExploreContext } from "../../context/ExploreContext";
-import buttonIcon from '../../assets/button.png'
+import buttonIcon from '../../assets/Button.svg'
 import { Link } from "react-router-dom";
 import AuthContext from '../../auth'
 
