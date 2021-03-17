@@ -11,10 +11,7 @@ function HomeImageContainer() {
         <div className="row home__imageContainer">
         <div className="col-md-5 d-flex justify-content-end">
           <Link className="imageContainer__img" to={{
-            pathname:"/game",
-            props:{
-              gameId:"c8sEokqTer2hZdLt8IUW"
-            }
+            pathname:"/game/"+String("c8sEokqTer2hZdLt8IUW"),
           }}>
             <img src={img1} style={{width:"100%", height:"100%"}} alt="" />
           </Link>

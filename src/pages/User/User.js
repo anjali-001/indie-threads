@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react'
 import AuthContext from '../../auth'
-import getUser from '../../constants/fire-functions/getUser'
+
+import { Redirect } from 'react-router-dom';
 import fire from '../../fire'
 import './User.css';
 import img from '../Home/assets/Img3.png'
 import FeatherIcon from "feather-icons-react";
 import UserCommunityCard from './UserCommunityCard';
+import Spinner from '../../components/spinner';
 
 const data=[
     {
@@ -31,7 +33,7 @@ const data=[
 
 ]
 
-const User = ({ match, location }) => {
+const User = (props) => {
 
     const [userData, setuserData] = useState()
     const [postData, setPostData] = useState([])
@@ -39,17 +41,44 @@ const User = ({ match, location }) => {
     const [loading, setLoading] = useState(true)
     const currentUser = useContext(AuthContext);
 
+    const [displayName, setDisplayName] = useState("");
+
     useEffect(() => {
-        console.log(currentUser.currentUser)
+    
+        const postsRef = fire.firestore().collection("posts");
+        const userRef = fire.firestore().collection("users");
+
         const getPosts = async () => {
-            const docs = await fire.firestore().collection("posts").where('author', "==", "users/" + currentUser.currentUser.uid).get();
-            setPostData(docs)
-            console.log(postData)
-            setLoadingPosts(false)
+            
+            const docs = await postsRef.get();
+            const docsData = [];
+            docs.forEach(doc => {
+                const tmpData = doc.data();
+                tmpData['gameId'] = doc.id;
+                if(tmpData.author == fire.auth().currentUser.email){
+                    docsData.push(tmpData);
+                }
+                // console.log('Game data: ', tmpData);
+                
+            })
+            setPostData(docsData);
+            setLoadingPosts(false);
+            setDisplayName(currentUser.currentUser.email)
+            setLoading(false);
+
         }
         
         getPosts();
-    }, [])
+        
+
+    }, []) 
+
+    if(currentUser.currentUser == null){
+        return (
+            <Redirect to="/" />
+        )
+    }
+
 
 
     return (
@@ -61,7 +90,7 @@ const User = ({ match, location }) => {
                </div>
                <div className="col-md-9 col-9 user__right">
                    <div className="user__rightName">
-                        <h2 className="m-5">{loading ? "Loading" : userData.username}</h2>
+                        <h2 className="m-5">{loading == true ? <Spinner /> : displayName }</h2>
                         <button className="user__button m-5"><FeatherIcon icon="edit-2" className="user__editIcon pr-1"/>Edit Profile</button>
                    </div>
                <div className="user__rightLink d-flex ml-5">
@@ -90,9 +119,10 @@ const User = ({ match, location }) => {
                    {loadingPosts ? 
                    <h1>Loading</h1>
                 :
-                postData.docs.map((post) => {
+                postData.map((post) => {
+                    // console.log("Post: ", post)
                     return(
-                        <UserCommunityCard item={post.id}/>
+                        <UserCommunityCard item={post}/>
                     )
                 })}
                 </div>
