@@ -74,8 +74,10 @@ const Community = (props) => {
 
     const dummy = useRef();
     const commentsRef = fire.firestore().collection("comments");
-    const query = commentsRef.orderBy("createdAt", "desc").where('gameId', '==', props.location.props.gameId);
-
+    const query = commentsRef.orderBy("createdAt").where('gameId', '==', props.match.params.id);
+    console.log(
+        "auth status: ", currentUser
+    )
     const [messages] = useCollectionData(
         query, 
         { idField: 'id' }
@@ -98,7 +100,7 @@ const Community = (props) => {
         const userdata = async () => {
             const data = await userRef.get()
             data.forEach(doc => {
-                if(doc.id === props.location.props.gameId){
+                if(doc.id === props.match.params.id){
                     // console.log(doc.id, '=>', doc.data());
                     setUser(doc.data());
                 }
@@ -107,12 +109,16 @@ const Community = (props) => {
     
         };
         userdata();
+
+        console.log("Community page is loaded")
         // setUser(response.user);
     }, [])
     
     const spinner = (
         <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
     )
+
+    console.log("Community page: user status -> ", user);
     
     if(user == null){
         return(
@@ -157,13 +163,17 @@ const Community = (props) => {
         // dummy.current.scrollIntoView({ behavior: 'smooth' });
     }
 
-    const sysReq = user.systemRequirements.split(';').map((value) => {
-        return(
-            <div className="info-details" key={value.trim()}>
-                {value.trim()}
-            </div>
-        )
-    })
+    let sysReq = user.systemRequirements;
+
+    if(user.systemRequirements.indexOf(';') > -1){
+        sysReq = user.systemRequirements.split(';').map((value) => {
+            return(
+                <div className="info-details" key={value.trim()}>
+                    {value.trim()}
+                </div>
+            )
+        })
+    }
 
     const renderTags = user.genre.map((value) => {
         return (
