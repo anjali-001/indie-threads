@@ -33,7 +33,7 @@ const Home = () => {
         <div className="custom-container">
       <div className="row">
         <div className="col-md-3 col-3 text-light home__left">
-          <h5>Browse by Genre</h5>
+          <h4 className="">Browse by Genre</h4 >
           <ul className="home__filter">
               {
                 genres.map(item =>
