@@ -61,4 +61,24 @@ div{
    
 }
 
+.create:hover{
+    transform: scale(1.08);
+    transition: transform 0.2s ease-in ;
+}
 
+/* Tooltip */
+.tooltip{
+    font-size:20px !important;
+    background-color: #16161a;
+    border: 2px solid #6238e0;
+    border-radius: 10px;
+    padding:5px 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+.tooltip-inner{
+    background-color: #16161a;
+}
+.arrow{
+    display: none !important;
+}
