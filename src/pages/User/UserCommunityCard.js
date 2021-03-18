@@ -9,7 +9,7 @@ function UserCommunityCard(props) {
       <div className="userCommunityCard col-lg-3 col-md-4 col-sm-6 col-12">
         <Card className="userCommunityCard__card">
           <Card.Body>
-            <Link to={{ pathname:"/game/"+props.item.gameId}}>
+            <Link to={{ pathname:"/game/"+String(props.item.gameId)}}>
             <h4 className="card__title">{props.item.title}</h4>
             </Link>
             <Card.Subtitle className="text-muted d-flex">

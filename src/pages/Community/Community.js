@@ -137,19 +137,11 @@ const Community = (props) => {
         e.preventDefault();
 
         const { uid, photoURL } = currentUser.currentUser;
-        console.log('UID: ', {
-            text: formValue,
-            replyTo: "",
-            gameId:props.location.props.gameId,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            author:currentUser.currentUser.email,
-            userId: uid 
-        })
-
+        
         await commentsRef.add({
             text: formValue,
             replyTo: "",
-            gameId:props.location.props.gameId,
+            gameId:props.match.params.id,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
             author:currentUser.currentUser.email,
             userId: uid 
