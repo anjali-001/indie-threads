@@ -1,71 +1,18 @@
-# Getting Started with Create React App
+<p align="center">
+    <img src="./assets/logo.svg" />
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+A free platform for gamers to explore the indie gaming community, discussion, promotion by/for developers and players.
+</p>
 
-## Available Scripts
 
-In the project directory, you can run:
+<p align="center">
+  <img src="https://camo.githubusercontent.com/fff9737fa823a9c62e19a8f3a3a8f6e3268a310164027b4707ac038ef77556d0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656163742532302d2532333631444146422e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d5265616374266c6f676f436f6c6f723d7768697465"/>
+  <img src="https://camo.githubusercontent.com/2efe24dd702eb49b97c4be01880911b922d5b46bfdf22d64daaafe7fa71332a5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656163745f526f757465722532302d2532334341343234352e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d5265616374253230526f75746572266c6f676f436f6c6f723d7768697465"/>
+  <img src="https://camo.githubusercontent.com/53401eae88745253d3df5b8283be4ac7e93414a180133a86e0aa968af0356e10/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f46697265626173652532302d2532334646434132382e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d4669726562617365266c6f676f436f6c6f723d7768697465"/>  
+  <img src="https://camo.githubusercontent.com/caf9d3251680e742d78d1caf78b151140a3498a8cbd6b0877246c1f5217743fc/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4669676d612532302d2532334632344531452e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d4669676d61266c6f676f436f6c6f723d7768697465"/>
+  <img src="https://camo.githubusercontent.com/3893ab784381af7c0095a743c77f6ff207bce0951462a56b6db0c3fe6c8a52c2/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e65746c6966792532302d2532333030433742372e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d4e65746c696679266c6f676f436f6c6f723d7768697465"/>
+  <img src="https://camo.githubusercontent.com/3dbcfa4997505c80ef928681b291d33ecfac2dabf563eb742bb3e269a5af909c/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f496c65726961796f2f6d61726b646f776e2d6261646765733f7374796c653d666f722d7468652d6261646765"/>
+</p>
 
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-_test_
