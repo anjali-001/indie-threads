@@ -20,9 +20,22 @@ export const ExploreProvider = (props) => {
     );
 
     useEffect(() => {
+
+        const postsRef = fire.firestore().collection("posts");
         
         async function getData(){
-            const response = await getPosts();
+            
+            const docs = await postsRef.get();
+            const docsData = [];
+            docs.forEach(doc => {
+                const tmpData = doc.data();
+                tmpData['gameId'] = doc.id;
+                if(tmpData.author === fire.auth().currentUser.email){
+                    docsData.push(tmpData);
+                }
+                
+            })        
+            const response = docsData;
             setData(response)
             setExploreData(response)
             setFilData(response)

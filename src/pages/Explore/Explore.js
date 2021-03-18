@@ -41,7 +41,7 @@ const Explore = () => {
             <h1 className="explore-heading">Active Communities</h1>
             {exploreData.length != 0 ? exploreData.map((post) => {
               return (
-                <PostCard post={post} />
+                <PostCard key={post.gameId} post={post} />
               );
             }) : <Spinner />
           }
