@@ -1,13 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Nav, Navbar, Dropdown } from "react-bootstrap";
-import FeatherIcon from "feather-icons-react";
-import "./Navbar.css";
-import logo from "../../assets/logo.svg";
-import img from "../../pages/Home/assets/Img1.png";
+import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { ExploreContext } from "../../context/ExploreContext";
+import FeatherIcon from "feather-icons-react";
+
 import AuthContext from '../../auth'
 import fire from '../../fire'
+import logo from "../../assets/logo.svg";
+import img from "../../pages/Home/assets/Img1.png";
+import { ExploreContext } from "../../context/ExploreContext";
+
+import "./Navbar.css";
 
 function NavHeader() {
   const [toggle, setToggle] = useState(false);
@@ -15,8 +17,9 @@ function NavHeader() {
   const {data,setExpData,setFilData} = useContext(ExploreContext);
   const [search, setSearch] = useState("");
   const [loadingUser, setLoadingUser] = useState(true)
-  const [username, setUsername] = useState("");
+  
   const user = useContext(AuthContext);
+  const [username, setUsername] = useState("");
 
   const searchClick = () => {
     setToggle(!toggle);
@@ -32,16 +35,26 @@ function NavHeader() {
   }, [search])
 
   useEffect(() => {
+
+    const userRef = fire.firestore().collection("users");
+
     const getUsername = async () => {
-
-      if(user.currentUser !== null){
-        setUsername(user.currentUser.email);
-        setLoadingUser(false);
-      }
+        
+        if(user.currentUser !== null){
+          const userdata = await userRef.where("email", "==", user.currentUser.email).get()
+          
+          userdata.forEach(user => {
+              setUsername(user.data());
+          })
+          
+        }
     }
-
+    setLoadingUser(false);
+    
     getUsername();
+
   }, [])
+  
 
   const filterCards = () => {
     let arr=[];
@@ -58,7 +71,7 @@ function NavHeader() {
     setExpData(arr)
     setFilData(arr)
   };
-
+  
   return (
     <div className="navHeader navHeader__style">
       <Navbar className="custom-container">
@@ -115,8 +128,17 @@ function NavHeader() {
           {dropdown && user.currentUser ? (
             <div className="navHeader__dropdownContent">
               <img className="mx-auto" src={img} />
-              {loadingUser == true ? <p className="navbar__username">Loading...</p> :  <p className="navbar__username">{username}</p>}
-              <button className="">Profile</button>
+              {loadingUser == true ? <p className="navbar__username">Loading...</p> :  <p className="navbar__username">{user.currentUser.email}</p>}
+              <button className="">
+                <Link className="navHeader__Profile-icon" to={{
+                    pathname:"/user/f",
+                    props:  {
+                      user:user
+                    }
+                  }}>
+                  Profile
+                </Link>                  
+              </button>
               <button className="" onClick={(e) => {e.preventDefault(); fire.auth().signOut()}}>Sign Out</button>
             </div>
           ) : null}

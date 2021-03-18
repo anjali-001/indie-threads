@@ -26,7 +26,7 @@ const Routes = () => {
                         <Route exact path={LoginPagePath}   component={Login} />
                         <Route exact path={ExplorePagePath} component={Explore} />
                         <Route exact path={CommunityPagePath} component={Community} />
-                        <Route exact path={UserProfile} component={User}/>
+                        <Route exact path={UserProfile + "/:userid"} component={User}/>
                         <Route exact path={postPath} component={Post}/>
                     </Switch>
                     </BodyWrapper>
