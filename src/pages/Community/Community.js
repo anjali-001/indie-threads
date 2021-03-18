@@ -74,7 +74,7 @@ const Community = (props) => {
 
     const dummy = useRef();
     const commentsRef = fire.firestore().collection("comments");
-    const query = commentsRef.orderBy("createdAt").where('gameId', '==', props.match.params.id);
+    const query = commentsRef.orderBy("createdAt", "desc").where('gameId', '==', props.match.params.id);
     console.log(
         "auth status: ", currentUser
     )
@@ -109,9 +109,6 @@ const Community = (props) => {
     
         };
         userdata();
-
-        console.log("Community page is loaded")
-        // setUser(response.user);
     }, [])
     
     const spinner = (

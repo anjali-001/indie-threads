@@ -10,6 +10,7 @@ import User from './pages/User'
 import Post from './pages/Post'
 import {AuthProvider} from './auth';
 import {ExploreProvider} from './context/ExploreContext'
+import BodyWrapper from './BodyWrapper';
 
 const Routes = () => {
     return (
@@ -18,6 +19,7 @@ const Routes = () => {
                 
                 <BrowserRouter>
                     <ExploreProvider>
+                    <BodyWrapper>
                     <Navbar/>
                     <Switch>
                         <Route exact path={HomePagePath}    component={Home} />
@@ -27,6 +29,7 @@ const Routes = () => {
                         <Route exact path={UserProfile + "/:userid"} component={User}/>
                         <Route exact path={postPath} component={Post}/>
                     </Switch>
+                    </BodyWrapper>
                     </ExploreProvider>
                 </BrowserRouter>
                 

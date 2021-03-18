@@ -30,7 +30,6 @@ const addPost = async (title, desc, genre, developer, relDate, link, video, pict
         //     })
         // })
         
-        console.log("Post added successfullly")
     }).catch((err) => {
         console.log("Error:", err);
     })

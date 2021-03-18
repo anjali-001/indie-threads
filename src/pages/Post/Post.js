@@ -33,10 +33,9 @@ const Post = () => {
         <div className="post-container">
              <section className="post-section">
              <div className="postForm">
-                <InputField name="Title" setField={settitle}/>
+                <InputField name="Title" setField={settitle} autofocus="true" />
                 <label>Description </label>
                 <textarea type="text"
-                    autoFocus
                     required
                 />
                 <InputField name="Genre (Seperate with commas)" setField={setGenre}/>
@@ -46,19 +45,16 @@ const Post = () => {
                 <InputField name="Video Link" setField={setVideo}/>
                 <label>Pictures (Separate with new lines)</label>
                 <textarea type="text"
-                    autoFocus
                     required
                     onChange={(e) => setpictures(e.target.value)}
                 />
                 <label>System Requirements </label>
                 <textarea type="text"
-                    autoFocus
                     required
                     onChange={(e) => setSysReq(e.target.value)}
                 />
                 <label>Platforms available </label>
                 <textarea type="text"
-                    autoFocus
                     required
                     onChange={(e) => setPlatforms(e.target.value)}
                 />

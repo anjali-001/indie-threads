@@ -4,7 +4,6 @@ import example from '../../assets/example.png'
 
 const PostCard = (props) => {
 
-    // console.log(props)
 
     return(
         <div className="card-container">

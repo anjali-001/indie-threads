@@ -7,7 +7,6 @@ import img from "../../pages/Home/assets/Img1.png";
 import { Link } from "react-router-dom";
 import { ExploreContext } from "../../context/ExploreContext";
 import AuthContext from '../../auth'
-import getUser from '../../constants/fire-functions/getUser'
 import fire from '../../fire'
 
 function NavHeader() {
@@ -17,7 +16,6 @@ function NavHeader() {
   const [search, setSearch] = useState("");
   const [loadingUser, setLoadingUser] = useState(true)
   const [username, setUsername] = useState("");
-  // console.log("navData>>>>>>>>>>>>", data);
   const user = useContext(AuthContext);
 
   const searchClick = () => {
@@ -59,7 +57,6 @@ function NavHeader() {
   const filterCards = () => {
     let arr=[];
     data.filter((item) => {
-      // console.log(item.title)
       if(item['title'].toLowerCase().includes(search.toLowerCase()))
         arr.push(item);
       else if(item.genre.filter(post => 
@@ -69,7 +66,6 @@ function NavHeader() {
         }
       ));
     });
-    // console.log(arr)
     setExpData(arr)
     setFilData(arr)
   };

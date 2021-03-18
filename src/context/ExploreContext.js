@@ -10,6 +10,8 @@ export const ExploreProvider = (props) => {
     const [data, setData] = useState([])
     const [exploreData,setExploreData] = useState([])
     const [filterData,setFilterData] = useState([])
+
+    const [loader, setLoader]  = useState(false);
     // console.log('val>>>',getPosts())
     const postsRef = fire.firestore().collection("posts");
     const [posts] = useCollectionData(
@@ -25,6 +27,8 @@ export const ExploreProvider = (props) => {
             const response = await getPosts();
             setData(response)
             setExploreData(response)
+            setFilData(response)
+            setLoader(false)
         }
         getData();
     }, [])
@@ -43,8 +47,7 @@ export const ExploreProvider = (props) => {
     // console.log(copyExpData)
     // console.log('Ref Posts: ', posts)
     return(
-        <ExploreContext.Provider value={{data:data, exploreData:exploreData,setExpData:setExpData, filterData:filterData, setFilData:setFilData}}>
-        {/* <ExploreContext.Provider value={[data,setData, exploreData, setExploreData]}> */}
+        <ExploreContext.Provider value={{data:data, exploreData:exploreData,setExpData:setExpData, filterData:filterData, setFilData:setFilData, loader:loader}}>
             {props.children}
         </ExploreContext.Provider>
     );
