@@ -114,6 +114,11 @@
     text-decoration: none;
 }
 
+.navHeader__Profile-icon:hover{
+    color: #FFFFFE;
+    text-decoration: none;    
+}
+
 @keyframes drop {
     0%{
         opacity: 0;

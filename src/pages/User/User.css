@@ -92,3 +92,13 @@
     transform: scale(1.05);
     box-shadow: 0 10px 20px #393950, 0 4px 8px #393950;
 }
+
+/* CSS Properties for the link the card */
+
+.userCommunityCard__card--link:hover{
+
+    text-decoration: none;
+
+}
+
+/* End of the CSS props for Link card */
