@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import {OverlayTrigger,Tooltip} from 'react-bootstrap'
 import "./Explore.css";
 import PostCard from "../../components/PostCard";
@@ -6,6 +6,9 @@ import Filter from "../../components/Filter";
 import { ExploreContext } from "../../context/ExploreContext";
 import AuthContext from "../../auth";
 import Spinner from '../../components/spinner'
+import AuthContext from "../../auth";
+import { Link } from "react-router-dom";
+import buttonIcon from "../../assets/Button.svg";
 
 const Explore = () => {
   const { exploreData, loader } = useContext(ExploreContext);
@@ -13,10 +16,13 @@ const Explore = () => {
   if (exploreData == []) {
     return (
       <div className="explore-container text-light">
-        <h1 style={{ color: "white" }}>Empty</h1>
+        <h1 style={{color: 'white'}}>
+            <Spinner />
+        </h1>
       </div>
     );
   }
+
   if(loader){
     return(
       <div className="loaderContainer">
@@ -24,18 +30,19 @@ const Explore = () => {
       </div>
     )
   }
+
   return (
     <div className="explore componentContainer">
       <div className="custom-container">
         <div className="row justify-content-around">
           <div className="col-md-8 col-8 text-light explore__left">
             <h1 className="explore-heading">Active Communities</h1>
-            {exploreData.map((post) => {
+            {exploreData.length != 0 ? exploreData.map((post) => {
               return (
-                // console.log(post)
-                <PostCard post={post} />
+                <PostCard key={post.gameId} post={post} />
               );
-            })}
+            }) : <Spinner />
+          }
           </div>
           <div className="col-md-4 filt-container">
             <Filter />

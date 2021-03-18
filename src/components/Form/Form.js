@@ -1,6 +1,8 @@
 import React, {useState, useRef, useEffect} from 'react';
 import JoditEditor from "jodit-react";
-import gql from 'graphql-tag'
+
+// Import was not used, pls uncomment if its being used
+// import gql from 'graphql-tag'
 
 const Form = () => {
 
@@ -11,10 +13,8 @@ const Form = () => {
 		readonly: false // all options from https://xdsoft.net/jodit/doc/
 	}
 
-    console.log(content)
-
     function submit (e) {
-        console.log(content)
+        // console.log(content)
     }
     
     return (

@@ -1,7 +1,9 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
+
 import img5 from "./assets/Img5.png";
-import './Home.css'
+
+import './Home.css';
 
 function HomeCarousel() {
   return (

@@ -109,6 +109,16 @@
     animation: drop2 0.5s;
 }
 
+.navHeader__Profile-icon{
+    color: #FFFFFE;
+    text-decoration: none;
+}
+
+.navHeader__Profile-icon:hover{
+    color: #FFFFFE;
+    text-decoration: none;    
+}
+
 @keyframes drop {
     0%{
         opacity: 0;

@@ -1,5 +1,4 @@
-import fire from '../../../fire.js'
-import firebase from 'firebase'
+import fire from '../../../fire.js';
 
 const getPosts = async (gameId) => {
 
@@ -9,7 +8,6 @@ const getPosts = async (gameId) => {
             if(gameId !== null){
                 if(gameId === doc.id){
                     data.push(doc.data());
-                    console.log('api: ', {user: doc.data()})
                     return {user: doc.data()};
                 }
             }

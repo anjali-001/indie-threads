@@ -1,9 +1,10 @@
-import fire from '../../fire';
 import React, {useState, useEffect, useContext} from 'react';
+import { Redirect } from 'react-router-dom';
+
+import fire from '../../fire';
 import Login from '../../components/Login';
 import { AuthContext } from '../../auth';
-import makeUser from '../../constants/fire-functions/makeUser'
-import { Redirect } from 'react-router-dom'
+import makeUser from '../../constants/fire-functions/makeUser';
 
 import './Style.css';
 
@@ -16,6 +17,9 @@ const App = () => {
   const [emailError, setEmailError] = useState("")
   const [passwordError, setPasswordError] = useState("")
   const [redirect, setRedirect] = useState(false);
+  const [bio, setBio] = useState("")
+  const [link, setLink] = useState("")
+  const [interests, setInterests] = useState("")
 
   const currentUser = useContext(AuthContext);
   
@@ -56,7 +60,7 @@ const App = () => {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((res) => {
-        makeUser(username, res.user.email, res.user.uid)
+        makeUser(username, res.user.email, res.user.uid, interests.split("\n"), bio, link)
         setRedirect(true)
         
       })
@@ -95,7 +99,7 @@ const App = () => {
   if (redirect) return <Redirect to='/explore' />
   return (
     <div className="login-container">
-      <Login username={username} setUsername={setUsername} email={email} setEmail={setEmail} password={password} setPassword={setPassword} handleLogin={handleLogin} handleSignUp={handleSignUp} account={account} setAccount={setAccount} emailError={emailError} passwordError={passwordError}>
+      <Login bio={bio} setBio={setBio} link={link} setLink={setLink} interests={interests} setInterests={setInterests} username={username} setUsername={setUsername} email={email} setEmail={setEmail} password={password} setPassword={setPassword} handleLogin={handleLogin} handleSignUp={handleSignUp} account={account} setAccount={setAccount} emailError={emailError} passwordError={passwordError}>
       </Login>
     </div>
   );
