@@ -30,11 +30,8 @@ export const ExploreProvider = (props) => {
             docs.forEach(doc => {
                 const tmpData = doc.data();
                 tmpData['gameId'] = doc.id;
-                if(tmpData.author === fire.auth().currentUser.email){
                     docsData.push(tmpData);
-                }
-                
-            })        
+            });
             const response = docsData;
             setData(response)
             setExploreData(response)
