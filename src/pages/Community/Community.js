@@ -1,13 +1,11 @@
 import React, {useContext, useState, useEffect, useRef} from 'react';
-
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-import Modal from 'react-bootstrap/Modal'
-import CreateThreadModal from '../../components/Modal';
+import firebase from 'firebase';
 
 import fire from '../../fire';
-import firebase from 'firebase'
 import { AuthContext } from '../../auth';
+import CreateThreadModal from '../../components/Modal';
+
 import './Community.css';
 
 const TAG2COLORS = {
@@ -83,12 +81,6 @@ const Community = (props) => {
         { idField: 'id' }
     );
 
-    // console.log(
-    //     "auth status: ", useCollectionData(commentsRef.orderBy("createdAt", "desc").where('gameId', '==', props.location.props.gameId), { idField: 'id' })
-    // )
-
-
-
     useEffect(() => {
         if(currentUser.currentUser !== null){
             setauthStatus(true);
@@ -101,7 +93,6 @@ const Community = (props) => {
             const data = await userRef.get()
             data.forEach(doc => {
                 if(doc.id === props.match.params.id){
-                    // console.log(doc.id, '=>', doc.data());
                     setUser(doc.data());
                 }
                 
@@ -145,11 +136,6 @@ const Community = (props) => {
         })
 
         setFormValue('');
-        // const deletedocs = messages.map( (msg) => {
-        //     fire.firestore().collection('cities').doc(msg.id).delete()
-        //     console.log('Deleted', msg.id);
-        // })
-        // dummy.current.scrollIntoView({ behavior: 'smooth' });
     }
 
     let sysReq = user.systemRequirements;
@@ -169,8 +155,6 @@ const Community = (props) => {
             <Tag key={value} value={value} />
         )
     })
-
-    // console.log("Disable", !authStatus);
     
     return (
         <>
@@ -253,10 +237,6 @@ const Community = (props) => {
 
                     <div className="comments">
                         
-                        {/* <Comment value="hello world"/>
-                        <Comment value="quick brown fox jumps over the lazy dog"/>
-                        <Comment value="hello world"/> */}
-                        {/* <span ref={dummy}></span> */}
                         {messages && messages.map(msg => (
                             <Comment 
                             key={msg.id} 
@@ -267,10 +247,12 @@ const Community = (props) => {
                             />)
                         )}
                     </div>
+
                     <CreateThreadModal
                         show={modalShow}
                         onHide={() => setModalShow(false)}
                     />
+                    
                 </div>                
             </div>
         </>

@@ -1,13 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Nav, Navbar, Dropdown } from "react-bootstrap";
-import FeatherIcon from "feather-icons-react";
-import "./Navbar.css";
-import logo from "../../assets/logo.svg";
-import img from "../../pages/Home/assets/Img1.png";
+import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { ExploreContext } from "../../context/ExploreContext";
+import FeatherIcon from "feather-icons-react";
+
 import AuthContext from '../../auth'
 import fire from '../../fire'
+import logo from "../../assets/logo.svg";
+import img from "../../pages/Home/assets/Img1.png";
+import { ExploreContext } from "../../context/ExploreContext";
+
+import "./Navbar.css";
 
 function NavHeader() {
   const [toggle, setToggle] = useState(false);
@@ -15,8 +17,9 @@ function NavHeader() {
   const {data,setExpData,setFilData} = useContext(ExploreContext);
   const [search, setSearch] = useState("");
   const [loadingUser, setLoadingUser] = useState(true)
-  const [username, setUsername] = useState("");
+  
   const user = useContext(AuthContext);
+  const [username, setUsername] = useState("");
 
   const searchClick = () => {
     setToggle(!toggle);
@@ -41,7 +44,6 @@ function NavHeader() {
           const userdata = await userRef.where("email", "==", user.currentUser.email).get()
           
           userdata.forEach(user => {
-              console.log("Navbar auth: ", user.data())
               setUsername(user.data());
           })
           

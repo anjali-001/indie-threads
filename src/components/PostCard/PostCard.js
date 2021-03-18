@@ -1,6 +1,7 @@
 import react from 'react';
-import './PostCard.css'
-import example from '../../assets/example.png'
+import example from '../../assets/example.png';
+
+import './PostCard.css';
 
 const PostCard = (props) => {
 

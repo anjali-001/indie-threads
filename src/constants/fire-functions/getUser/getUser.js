@@ -1,5 +1,5 @@
-import fire from '../../../fire.js'
-import firebase from 'firebase'
+import fire from '../../../fire.js';
+import firebase from 'firebase';
 
 const getUser = async () => {
 

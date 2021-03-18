@@ -1,8 +1,8 @@
 import React, {useState, createContext, useEffect} from 'react';
-import getPosts from '../constants/fire-functions/getPosts';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+
 import fire from '../fire';
-import firebase from 'firebase';
+import getPosts from '../constants/fire-functions/getPosts';
 
 export const ExploreContext = createContext();
 
@@ -12,17 +12,15 @@ export const ExploreProvider = (props) => {
     const [filterData,setFilterData] = useState([])
 
     const [loader, setLoader]  = useState(false);
-    // console.log('val>>>',getPosts())
+    
     const postsRef = fire.firestore().collection("posts");
     const [posts] = useCollectionData(
         postsRef, 
         { idField: 'id' }
     );
 
-
     useEffect(() => {
         
-        // console.log('Posts: ',posts)
         async function getData(){
             const response = await getPosts();
             setData(response)

@@ -1,22 +1,21 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import {OverlayTrigger,Tooltip} from 'react-bootstrap'
-import "./Explore.css";
 
-import PostCard from "../../components/PostCard";
-import Filter from "../../components/Filter";
-import { ExploreContext } from "../../context/ExploreContext";
-import buttonIcon from "../../assets/Button.svg";
-import { Link } from "react-router-dom";
 import AuthContext from "../../auth";
-
+import { Link } from "react-router-dom";
+import Filter from "../../components/Filter";
 import Spinner from '../../components/spinner';
+import PostCard from "../../components/PostCard";
+import buttonIcon from "../../assets/Button.svg";
+import { ExploreContext } from "../../context/ExploreContext";
+
+import "./Explore.css";
 
 const Explore = () => {
   const { exploreData, loader } = useContext(ExploreContext);
   const { currentUser } = useContext(AuthContext);
 
   if (exploreData == []) {
-    // console.log('Explore Page data: True')
     return (
       <div className="explore-container text-light">
         <h1 style={{color: 'white'}}>
@@ -26,8 +25,6 @@ const Explore = () => {
     );
   }
 
-  // console.log('Explore Page data: ', exploreData)
-
   if(loader){
     return(
       <div className="loaderContainer">
@@ -35,6 +32,7 @@ const Explore = () => {
       </div>
     )
   }
+
   return (
     <div className="explore componentContainer">
       <div className="custom-container">

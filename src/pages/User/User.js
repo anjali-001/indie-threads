@@ -1,41 +1,17 @@
 import React, { useEffect, useState, useContext } from 'react'
-import AuthContext from '../../auth'
-
 import { Redirect } from 'react-router-dom';
-import fire from '../../fire'
-import './User.css';
-import img from '../Home/assets/Img3.png'
 import FeatherIcon from "feather-icons-react";
+
+import fire from '../../fire'
+import AuthContext from '../../auth'
+import img from '../Home/assets/Img3.png'
 import UserCommunityCard from './UserCommunityCard';
 import Spinner from '../../components/spinner';
 
-const data=[
-    {
-        title: "Untitled Goose Game",
-        text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        genre: ["horror", "adventure", "RPG"]
-    },
-    {
-        title: "Among Us",
-        text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        genre: ["horror", "action", "RPG"]
-    },
-    {
-        title: "Assasins Creed",
-        text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        genre: ["adventure", "RPG"]
-    },
-    {
-        title: "Assasins Creed",
-        text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        genre: ["adventure", "RPG"]
-    }
-
-]
+import './User.css';
 
 const User = (props) => {
 
-    const [userData, setuserData] = useState()
     const [postData, setPostData] = useState([])
     const [loadingPosts, setLoadingPosts] = useState(true)
     const [loading, setLoading] = useState(true)
@@ -46,7 +22,7 @@ const User = (props) => {
     useEffect(() => {
     
         const postsRef = fire.firestore().collection("posts");
-        const userRef = fire.firestore().collection("users");
+        
 
         const getPosts = async () => {
             
@@ -55,23 +31,20 @@ const User = (props) => {
             docs.forEach(doc => {
                 const tmpData = doc.data();
                 tmpData['gameId'] = doc.id;
-                if(tmpData.author == fire.auth().currentUser.email){
+                if(tmpData.author === fire.auth().currentUser.email){
                     docsData.push(tmpData);
                 }
-                // console.log('Game data: ', tmpData);
                 
             })
             setPostData(docsData);
             setLoadingPosts(false);
             setDisplayName(currentUser.currentUser.email)
             setLoading(false);
-
         }
         
         getPosts();
         
-
-    }, []) 
+    }, [currentUser.currentUser.email]) 
 
     if(currentUser.currentUser == null){
         return (
@@ -79,18 +52,16 @@ const User = (props) => {
         )
     }
 
-
-
     return (
         <div className="componentContainer"> 
         <div className="custom-container user">
            <div className="row">
                <div className="col-md-3 col-3 user__left">
-                    <img className="m-5" src={img}/>
+                    <img className="m-5" src={img} alt="user profile logo"/>
                </div>
                <div className="col-md-9 col-9 user__right">
                    <div className="user__rightName">
-                        <h2 className="m-5">{loading == true ? <Spinner /> : displayName }</h2>
+                        <h2 className="m-5">{loading === true ? <Spinner /> : displayName }</h2>
                         <button className="user__button m-5"><FeatherIcon icon="edit-2" className="user__editIcon pr-1"/>Edit Profile</button>
                    </div>
                <div className="user__rightLink d-flex ml-5">
@@ -120,7 +91,6 @@ const User = (props) => {
                    <h1>Loading</h1>
                 :
                 postData.map((post) => {
-                    // console.log("Post: ", post)
                     return(
                         <UserCommunityCard item={post}/>
                     )

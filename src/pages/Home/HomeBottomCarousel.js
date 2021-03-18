@@ -1,6 +1,7 @@
 import React from "react";
-import img6 from "./assets/Img6.png";
 import { Carousel } from "react-bootstrap";
+
+import img6 from "./assets/Img6.png";
 
 function HomeBottomCarousel() {
   return (
