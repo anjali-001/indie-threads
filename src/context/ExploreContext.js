@@ -7,13 +7,12 @@ export const ExploreProvider = (props) => {
     const [data, setData] = useState([])
     const [exploreData,setExploreData] = useState([])
     const [filterData,setFilterData] = useState([])
-    const [loader,setLoader] = useState(false)
+    const [loader,setLoader] = useState(true)
     console.log('val>>>',getPosts())
 
     useEffect(() => {
 
         async function getData(){
-            setLoader(true)
             const response = await getPosts();
             setData(response)
             setExploreData(response)
