@@ -1,14 +1,9 @@
 import React, { useContext } from "react";
-import {OverlayTrigger,Tooltip} from 'react-bootstrap'
 import "./Explore.css";
 import PostCard from "../../components/PostCard";
 import Filter from "../../components/Filter";
 import { ExploreContext } from "../../context/ExploreContext";
-import AuthContext from "../../auth";
 import Spinner from '../../components/spinner'
-import AuthContext from "../../auth";
-import { Link } from "react-router-dom";
-import buttonIcon from "../../assets/Button.svg";
 
 const Explore = () => {
   const { exploreData, loader } = useContext(ExploreContext);
