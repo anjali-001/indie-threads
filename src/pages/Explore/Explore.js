@@ -36,7 +36,6 @@ const Explore = () => {
             <h1 className="explore-heading">Active Communities</h1>
             {exploreData.map((post) => {
               return (
-                // console.log(post)
                 <PostCard post={post} />
               );
             })}

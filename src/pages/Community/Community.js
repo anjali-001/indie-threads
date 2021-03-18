@@ -79,7 +79,6 @@ const Community = (props) => {
             const data = await userRef.get()
             data.forEach(doc => {
                 if(doc.id === props.location.props.gameId){
-                    // console.log(doc.id, '=>', doc.data());
                     setUser(doc.data());
                 }
                 
@@ -88,7 +87,6 @@ const Community = (props) => {
     
         };
         userdata();
-        // setUser(response.user);
     }, [])
     
     const spinner = (

@@ -23,13 +23,11 @@ const addPost = async (title, desc, genre, developer, relDate, link, video, pict
             posts = doc.data().posts;
              var updatedPosts = [...posts]
              updatedPosts.push(docRef)
-            //  console.log(updatedPosts)
             fire.firestore().collection("users").doc(uid).update({
                 posts: updatedPosts
             })
         })
         
-        console.log("Post added successfullly")
     }).catch((err) => {
         console.log("Error:", err);
     })

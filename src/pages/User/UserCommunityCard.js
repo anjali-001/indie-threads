@@ -3,7 +3,6 @@ import {Card} from 'react-bootstrap'
 
 
 function UserCommunityCard(props) {
-  // console.log("hello", props.title)
   return (
     <div className="userCommunityCard col-lg-3 col-md-4 col-sm-6 col-12">
       <Card className="userCommunityCard__card">
