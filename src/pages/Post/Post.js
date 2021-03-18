@@ -1,4 +1,4 @@
-import react, { useState } from 'react';
+import { useState } from 'react';
 import { Redirect } from 'react-router';
 
 import InputField from '../../components/InputField';
