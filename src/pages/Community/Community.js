@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect, useRef} from 'react';
-
+import FeatherIcon from "feather-icons-react";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
@@ -163,6 +163,10 @@ const Community = (props) => {
                                 {user.releaseDate}
                                 <div className="tags-section">
                                     {renderTags}
+                                </div>
+                                <div className="socialmediaContainer">
+                                    <FeatherIcon className="socialMedia-icons" icon="twitter"/>
+                                    <FeatherIcon className="socialMedia-icons" icon="facebook"/>
                                 </div>
                             </div>
                         </div>

@@ -70,6 +70,26 @@
         border-radius: 1em;
     }
 
+    /* Social Media Icons  */
+    .socialmediaContainer{
+        
+    }
+
+    .socialMedia-icons{
+        color: #2CB67D;
+        border: 2px solid #2CB67D;
+        border-radius: 20px;
+        padding: 2px;
+    }
+
+    .socialMedia-icons:hover{
+        color: #FFFFFE;
+        background-color: #2CB67D;
+        transition: background-color 0.2s ease-in;
+        transition: color 0.2s ease-in;
+    }
+
+
 .media-section{
     margin: 0 3em;
     max-width: 100%;
