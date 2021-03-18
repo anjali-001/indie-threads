@@ -29,7 +29,7 @@ const Routes = () => {
                         <Route exact path={UserProfile} component={User}/>
                         <Route exact path={postPath} component={Post}/>
                     </Switch>
-                    </BodyWrapper>
+                    </BodyWrapper>      
                     </ExploreProvider>
                 </BrowserRouter>
                 

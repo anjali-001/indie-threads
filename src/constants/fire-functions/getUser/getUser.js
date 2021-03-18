@@ -13,7 +13,7 @@ const getUser = async () => {
         console.log("User doesn't exist!", error);
         return null;
     })
-    
+    return result
 }   
 
 export default getUser;
