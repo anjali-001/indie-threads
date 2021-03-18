@@ -46,6 +46,7 @@ div{
 }
 
 .home__filterOptions{
+    font-size: 22px;
     color: #FFFFFE;
     text-decoration: none;
     list-style: none;
