@@ -8,9 +8,10 @@ import { ExploreContext } from "../../context/ExploreContext";
 import buttonIcon from "../../assets/Button.svg";
 import { Link } from "react-router-dom";
 import AuthContext from "../../auth";
+import Spinner from '../../components/spinner'
 
 const Explore = () => {
-  const { exploreData } = useContext(ExploreContext);
+  const { exploreData, loader } = useContext(ExploreContext);
   const { currentUser } = useContext(AuthContext);
 
   if (exploreData == []) {
@@ -19,6 +20,13 @@ const Explore = () => {
         <h1 style={{ color: "white" }}>Empty</h1>
       </div>
     );
+  }
+  if(loader){
+    return(
+      <div className="loaderContainer">
+        <Spinner />
+      </div>
+    )
   }
   return (
     <div className="explore componentContainer">
