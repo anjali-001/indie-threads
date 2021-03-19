@@ -167,7 +167,7 @@ const Community = (props) => {
             <Tag key={value} value={value} />
         )
     })
-    console.log(user)
+    // console.log(user)
     return (
         <>
             <div className="home componentContainer">
@@ -193,7 +193,8 @@ const Community = (props) => {
                     </div>
 
                     <div className="media-section">
-                        {user.gameplayImages.map((image) => {
+                        {user.gameplatImages.map((image) => {
+                            // console.log("Check URL: ", image);
                             return(
                                 <img src={image} />
                             )

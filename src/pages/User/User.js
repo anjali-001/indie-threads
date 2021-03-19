@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Redirect } from 'react-router-dom';
 import FeatherIcon from "feather-icons-react";
+import { AvatarGenerator } from 'random-avatar-generator';
 
 import fire from '../../fire'
 import AuthContext from '../../auth'
@@ -19,6 +20,8 @@ const User = (props) => {
 
     const [userData, setUserData] = useState(null);
     const loggedIn = sessionStorage.getItem("loggedIn");
+
+    const generator = new AvatarGenerator();
 
 
     useEffect(() => {
@@ -83,7 +86,8 @@ const User = (props) => {
         <div className="custom-container user">
            <div className="row">
                <div className="col-md-3 col-3 user__left">
-                    <img className="m-5" src={img} alt="user profile logo"/>
+                    {/* <img className="m-5" src={img} alt="user profile logo"/> */}
+                    <img src={generator.generateRandomAvatar()} alt="user profile logo"/>
                </div>
                <div className="col-md-9 col-9 user__right">
                    <div className="user__rightName">
