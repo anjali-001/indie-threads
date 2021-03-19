@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect, useRef} from 'react';
 import FeatherIcon from "feather-icons-react";
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import {TwitterShareButton} from 'react-share';
 import Filter from 'bad-words';
 import firebase from 'firebase';
 import { AvatarGenerator } from 'random-avatar-generator';
@@ -185,7 +185,15 @@ const Community = (props) => {
                                         {renderTags}
                                     </div>
                                 <div className="socialmediaContainer ml-auto">
-                                    <FeatherIcon className="socialMedia-icons" icon="twitter"/>
+                                    <TwitterShareButton title={
+                                        `Hey check this game "${user.title}" out! Really cool stuff, check it out here:`
+                                        } 
+                                        url={"https://indie-threads.netlify.app/game/"+String(props.match.params.id)}
+
+                                        hashtags={user.genre.concat(["indieThreads"])}
+                                    >
+                                        <FeatherIcon className="socialMedia-icons" icon="twitter"/>
+                                    </TwitterShareButton>
                                     <FeatherIcon className="socialMedia-icons" icon="facebook"/>
                                 </div>
                             </div>
