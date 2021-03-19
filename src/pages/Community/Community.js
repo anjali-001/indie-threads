@@ -168,12 +168,10 @@ const Community = (props) => {
                             </h1>
                             <div className="sub-title">
                                 {user.releaseDate}
-                                <div className="tags-container">
                                     <div className="tags-section">
                                         {renderTags}
                                     </div>
-                                </div>
-                                <div className="socialmediaContainer">
+                                <div className="socialmediaContainer ml-auto">
                                     <FeatherIcon className="socialMedia-icons" icon="twitter"/>
                                     <FeatherIcon className="socialMedia-icons" icon="facebook"/>
                                 </div>
