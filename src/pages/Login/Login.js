@@ -22,6 +22,8 @@ const App = () => {
   const [interests, setInterests] = useState("")
 
   const currentUser = useContext(AuthContext);
+
+  const loggedIn = sessionStorage.getItem("loggedIn");
   
   const clearInputs = () => {
     setEmail("");
@@ -40,7 +42,10 @@ const App = () => {
     fire
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => {setRedirect(true)})
+      .then(() => {
+        sessionStorage.setItem("loggedIn", email);
+        setRedirect(true)
+      })
       .catch(err => {{
         switch(err.code){
           case "auth/invalid-email":
@@ -77,10 +82,6 @@ const App = () => {
       })
   }
 
-  const handleLogout = () => {
-    fire.auth().signOut();
-  }
-
   const authListener = () => {
     fire.auth().onAuthStateChanged(user => {
       if (user){
@@ -97,6 +98,7 @@ const App = () => {
   }, [])
 
   if (redirect) return <Redirect to='/explore' />
+  if(loggedIn === null) return <Redirect to='/explore' />
   return (
     <div className="login-container">
       <Login bio={bio} setBio={setBio} link={link} setLink={setLink} interests={interests} setInterests={setInterests} username={username} setUsername={setUsername} email={email} setEmail={setEmail} password={password} setPassword={setPassword} handleLogin={handleLogin} handleSignUp={handleSignUp} account={account} setAccount={setAccount} emailError={emailError} passwordError={passwordError}>

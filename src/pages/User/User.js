@@ -17,40 +17,66 @@ const User = (props) => {
     const [loading, setLoading] = useState(true)
     const currentUser = useContext(AuthContext);
 
-    const [displayName, setDisplayName] = useState("");
+    const [userData, setUserData] = useState(null);
+    const loggedIn = sessionStorage.getItem("loggedIn");
+
 
     useEffect(() => {
-    
-        const postsRef = fire.firestore().collection("posts");
-        
 
-        const getPosts = async () => {
+        if(currentUser.currentUser != null){
+        
+            const postsRef = fire.firestore().collection("posts");
             
-            const docs = await postsRef.get();
-            const docsData = [];
-            docs.forEach(doc => {
-                const tmpData = doc.data();
-                tmpData['gameId'] = doc.id;
-                if(tmpData.author === fire.auth().currentUser.email){
-                    docsData.push(tmpData);
-                }
+
+            const getPosts = async () => {
                 
-            })
-            setPostData(docsData);
-            setLoadingPosts(false);
-            setDisplayName(currentUser.currentUser.email)
-            setLoading(false);
+                const docs = await postsRef.get();
+                const docsData = [];
+                docs.forEach(doc => {
+                    const tmpData = doc.data();
+                    tmpData['gameId'] = doc.id;
+                    if(tmpData.author === fire.auth().currentUser.email){
+                        docsData.push(tmpData);
+                    }
+                    
+                })
+
+                const userRef = fire.firestore().collection("users");
+
+                const getUsername = async () => {
+                    
+                    if(currentUser.currentUser !== null){
+                    const userdata = await userRef.where("email", "==", currentUser.currentUser.email).get()
+                    
+                    userdata.forEach(user => {
+                        setUserData(user.data());
+                        setLoading(false);
+                    })
+                    
+                    }
+                }
+
+                getUsername()
+                
+                setPostData(docsData);
+                setLoadingPosts(false);
+   
+            }
+            
+            getPosts();
+
         }
         
-        getPosts();
-        
-    }, [currentUser.currentUser.email]) 
+    }, [currentUser]) 
 
-    if(currentUser.currentUser == null){
+    if(currentUser.currentUser === null && loggedIn !== null){
         return (
             <Redirect to="/" />
         )
     }
+
+    console.log(userData.link);
+
 
     return (
         <div className="componentContainer"> 
@@ -61,38 +87,45 @@ const User = (props) => {
                </div>
                <div className="col-md-9 col-9 user__right">
                    <div className="user__rightName">
-                        <h2 className="m-5">{loading === true ? <Spinner /> : displayName }</h2>
+                        <h2 className="m-5">{loading === true ? <Spinner /> : userData.username }</h2>
                         <button className="user__button m-5"><FeatherIcon icon="edit-2" className="user__editIcon pr-1"/>Edit Profile</button>
                    </div>
                <div className="user__rightLink d-flex ml-5">
-                    <a href="https://cmd.to/" className="d-flex">
-                            <FeatherIcon className="user__icon" icon="link"/>
-                            <p className="pl-2 pr-5">Website</p>
-                    </a>
-                    <a href="https://cmd.to/" className="d-flex">
-                            <FeatherIcon className="user__icon" icon="link-2"/>
-                            <p className="pl-2"> another Website</p>
-                    </a>
+                    {loading === true ? <Spinner /> : 
+                        <>
+                            <a href={"https://"+userData.link} target="#" className="d-flex">
+                                    <FeatherIcon className="user__icon" icon="link"/>
+                                    <p className="pl-2 pr-5">Website</p>
+                            </a>
+                            <a href="https://cmd.to/" target="#" className="d-flex">
+                                    <FeatherIcon className="user__icon" icon="link-2"/>
+                                    <p className="pl-2"> another Website</p>
+                            </a>
+                        </>
+                    }
                </div>
                <div className="ml-5 d-flex py-2">
                    <p className="pr-2">Interests</p>
-                   <p className="user__rightTag mr-3">Adventure</p>
-                   <p className="user__rightTag mr-3">Action</p>
-                   <p className="user__rightTag mr-3">Casual</p>
-                   <p className="user__rightTag mr-3">RPG</p>
+                   {
+                       loading === true ? <Spinner /> : userData.interests.map((interest) => {
+                           return(
+                            <p key={interest} className="user__rightTag mr-3">{interest}</p>            
+                           )
+                       })
+                   }
                </div>
-               <p className="ml-5">The bio will go here: Quisque velit nisi, pretium ut lacinia in, elementum id enim. Praesent sapien massa, convallis</p>
+               {loading === true ? <Spinner /> :<p className="ml-5">Bio: {userData.bio}</p>}
                </div>
            </div>
            <div className="user__communities">
                <h3 className="ml-5">Your Communities</h3>
                <div className="row m-5">
                    {loadingPosts ? 
-                   <h1>Loading</h1>
+                   <Spinner /> 
                 :
                 postData.map((post) => {
                     return(
-                        <UserCommunityCard item={post}/>
+                        <UserCommunityCard key={post.gameId} item={post}/>
                     )
                 })}
                 </div>
