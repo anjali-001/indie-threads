@@ -1,8 +1,10 @@
 
-import React, {useContext} from 'react'
-import './Filter.css'
+import React, {useContext} from 'react';
+
 import { ExploreContext } from "../../context/ExploreContext";
-import filter_icon from '../../assets/filter.png'
+import filter_icon from '../../assets/filter.png';
+
+import './Filter.css';
 
 const Filter = () => {
 

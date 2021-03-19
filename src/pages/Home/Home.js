@@ -1,11 +1,12 @@
 import React, {useContext} from "react";
-import "./Home.css";
+import {Link} from 'react-router-dom';
+
 import HomeCarousel from "./HomeCarousel";
 import HomeImageContainer from "./HomeImageContainer";
 import HomeBottomCarousel from './HomeBottomCarousel';
-import {Link} from 'react-router-dom'
 import { ExploreContext } from "../../context/ExploreContext";
 
+import "./Home.css";
 
 
 const Home = () => {

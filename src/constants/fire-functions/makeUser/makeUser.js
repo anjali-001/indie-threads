@@ -1,5 +1,4 @@
-import fire from '../../../fire.js'
-import firebase from 'firebase'
+import fire from '../../../fire.js';
 
 const makeUser = async (username, email, uid, interests, bio, link) => {
     await fire.firestore().collection("users").doc(uid).set({
@@ -7,7 +6,7 @@ const makeUser = async (username, email, uid, interests, bio, link) => {
         email: email,
         uid: uid,
         posts: [],
-        intersts: interests,
+        interests: interests,
         bio: bio,
         link: link
     }).then((docRef) => {

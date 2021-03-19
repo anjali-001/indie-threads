@@ -1,9 +1,10 @@
-import fire from '../../fire';
 import React, {useState, useEffect, useContext} from 'react';
+import { Redirect } from 'react-router-dom';
+
+import fire from '../../fire';
 import Login from '../../components/Login';
 import { AuthContext } from '../../auth';
-import makeUser from '../../constants/fire-functions/makeUser'
-import { Redirect } from 'react-router-dom'
+import makeUser from '../../constants/fire-functions/makeUser';
 
 import './Style.css';
 
@@ -59,7 +60,7 @@ const App = () => {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((res) => {
-        makeUser(username, res.user.email, res.user.uid, interests.split("\n"), bio, link)
+        makeUser(username, res.user.email, res.user.uid, interests.split(","), bio, link)
         setRedirect(true)
         
       })
