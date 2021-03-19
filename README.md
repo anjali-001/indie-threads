@@ -32,5 +32,5 @@ A free platform for gamers to explore the <span style="color:#2CB67D">indie gami
 
 - Making **threads/pages** for different indie games which would **serve as discussion forums**, reviews, screenshots, videos, stats(rating, current active user base, rank, related games, etc.)
 - Giving an **option of creating profiles** that would serve as a **gaming profile** of a person with ratings, games played, currently playing, platforms available on, tags(PC/PS4), person's gaming setup, system requirement for the game, etc. Even if a person doesn't create a profile, they can **access the forums' content without the obligation of creating a profile**, he/she will have to create a profile only if they want to add to the content.
-- Indie games can suffer from a good amount of bad cheaters who spoils the gaming experience completely. We can convey the message to Game Devs by contacting them with the gamers' community **support and feedback**.
+- Indie games can suffer from a good amount of cheaters who spoils the gaming experience completely. We can convey the message to Game Devs by contacting them with the gamers' community **support and feedback**.
 - **Monitoring** for the kind of **content** being put out by people with the help of **admin & moderators**.
