@@ -140,7 +140,7 @@ function NavHeader() {
             icon="user"
             onClick={() => setDropdown(!dropdown)}
           />
-          {dropdown && loggedIn? (
+          {dropdown && loggedIn()? (
             <div className="navHeader__dropdownContent">
               <img className="mx-auto" src={img} />
               {
