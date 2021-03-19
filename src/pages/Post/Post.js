@@ -19,6 +19,7 @@ const Post = () => {
     const [platforms, setPlatforms] = useState("")
     const [posted, setPosted] = useState(false)
 
+    const loggedIn = sessionStorage.getItem("loggedIn");
 
     const submitPost = async (e) => {
         e.preventDefault();
@@ -28,7 +29,10 @@ const Post = () => {
                     setPosted(true)
                 })
     }
+
+    if(loggedIn === null) return <Redirect to="/explore"/>
     if (posted) return <Redirect to="/explore"/>
+    
     return(
         <div className="post-container">
              <section className="post-section">
