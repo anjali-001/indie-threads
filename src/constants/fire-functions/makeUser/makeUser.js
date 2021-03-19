@@ -6,7 +6,7 @@ const makeUser = async (username, email, uid, interests, bio, link) => {
         email: email,
         uid: uid,
         posts: [],
-        intersts: interests,
+        interests: interests,
         bio: bio,
         link: link
     }).then((docRef) => {

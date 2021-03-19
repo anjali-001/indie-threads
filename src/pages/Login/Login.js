@@ -60,7 +60,7 @@ const App = () => {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((res) => {
-        makeUser(username, res.user.email, res.user.uid, interests.split("\n"), bio, link)
+        makeUser(username, res.user.email, res.user.uid, interests.split(","), bio, link)
         setRedirect(true)
         
       })
