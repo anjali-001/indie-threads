@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import example from '../../assets/example.png';
+import icon from '../../assets/icon.png';
 
 import './PostCard.css';
 
@@ -11,7 +11,7 @@ const PostCard = (props) => {
         <Link to={{ pathname:"/game/"+String(props.post.gameId)}}>
             <div className="card-container">
                 <div className="card-img-container">
-                    <img className="card-img" src={example}/>
+                    <img className="card-img" src={icon}/>
                 </div>
                 <div className="card-content">
                     
