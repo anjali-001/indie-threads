@@ -40,7 +40,10 @@ const App = () => {
     fire
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => {setRedirect(true)})
+      .then(() => {
+        sessionStorage.setItem("loggedIn", email);
+        setRedirect(true)
+      })
       .catch(err => {{
         switch(err.code){
           case "auth/invalid-email":
@@ -75,10 +78,6 @@ const App = () => {
             break;
         }
       })
-  }
-
-  const handleLogout = () => {
-    fire.auth().signOut();
   }
 
   const authListener = () => {

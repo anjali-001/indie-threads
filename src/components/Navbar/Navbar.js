@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import FeatherIcon from "feather-icons-react";
 
@@ -19,7 +19,16 @@ function NavHeader() {
   const [loadingUser, setLoadingUser] = useState(true)
   
   const user = useContext(AuthContext);
-  const [username, setUsername] = useState("");
+  const [userData, setUserData] = useState(null);
+
+  const loggedIn = () => {
+    if(sessionStorage.getItem("loggedIn")!== null){
+      return true;
+    }
+    else{
+      return false;
+    }
+  };
 
   const searchClick = () => {
     setToggle(!toggle);
@@ -44,16 +53,16 @@ function NavHeader() {
           const userdata = await userRef.where("email", "==", user.currentUser.email).get()
           
           userdata.forEach(user => {
-              setUsername(user.data());
+              setUserData(user.data());
+              setLoadingUser(false);
           })
-          
         }
     }
-    setLoadingUser(false);
+    
     
     getUsername();
 
-  }, [])
+  }, [user])
   
 
   const filterCards = () => {
@@ -71,6 +80,12 @@ function NavHeader() {
     setExpData(arr)
     setFilData(arr)
   };
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    sessionStorage.removeItem("loggedIn");
+    fire.auth().signOut();
+  }
   
   return (
     <div className="navHeader navHeader__style">
@@ -125,21 +140,26 @@ function NavHeader() {
             icon="user"
             onClick={() => setDropdown(!dropdown)}
           />
-          {dropdown && user.currentUser ? (
+          {dropdown && loggedIn? (
             <div className="navHeader__dropdownContent">
               <img className="mx-auto" src={img} />
-              {loadingUser == true ? <p className="navbar__username">Loading...</p> :  <p className="navbar__username">{user.currentUser.email}</p>}
-              <button className="">
-                <Link className="navHeader__Profile-icon" to={{
-                    pathname:"/user/f",
-                    props:  {
-                      user:user
-                    }
-                  }}>
-                  Profile
-                </Link>                  
-              </button>
-              <button className="" onClick={(e) => {e.preventDefault(); fire.auth().signOut()}}>Sign Out</button>
+              {
+                loadingUser !== true? 
+                (
+                  <p className="navbar__username">{userData.username}</p>                
+                ) :  <p>Loading...</p>
+              }
+                <button className="">
+                  <Link className="navHeader__Profile-icon" to={{
+                      pathname:"/user/f",
+                      props:  {
+                        user:user
+                      }
+                    }}>
+                    Profile
+                  </Link>                  
+                </button>
+                <button className="" onClick={handleLogout}>Sign Out</button>
             </div>
           ) : null}
           {dropdown && !user.currentUser ? (

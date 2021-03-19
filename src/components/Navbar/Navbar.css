@@ -13,6 +13,10 @@
 
 }
 
+.navbar__username{
+    color: #16161A;
+}
+
 .navHeader__link {
     color: #FFFFFE;
 }

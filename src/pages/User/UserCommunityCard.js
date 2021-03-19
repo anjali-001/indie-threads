@@ -14,7 +14,7 @@ function UserCommunityCard(props) {
             </Link>
             <Card.Subtitle className="text-muted d-flex">
               {props.item.genre.map(res => 
-                <p className="mr-1 userCommunityCard__genre">{res}</p>
+                <p key={res} className="mr-1 userCommunityCard__genre">{res}</p>
               )}
             </Card.Subtitle>
             <Card.Text className="card__text">
