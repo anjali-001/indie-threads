@@ -75,6 +75,8 @@ const User = (props) => {
         )
     }
 
+    console.log(userData.link);
+
 
     return (
         <div className="componentContainer"> 
@@ -91,11 +93,11 @@ const User = (props) => {
                <div className="user__rightLink d-flex ml-5">
                     {loading === true ? <Spinner /> : 
                         <>
-                            <a href={userData.link} className="d-flex">
+                            <a href={"https://"+userData.link} target="#" className="d-flex">
                                     <FeatherIcon className="user__icon" icon="link"/>
                                     <p className="pl-2 pr-5">Website</p>
                             </a>
-                            <a href="https://cmd.to/" className="d-flex">
+                            <a href="https://cmd.to/" target="#" className="d-flex">
                                     <FeatherIcon className="user__icon" icon="link-2"/>
                                     <p className="pl-2"> another Website</p>
                             </a>
