@@ -75,7 +75,7 @@ const User = (props) => {
         )
     }
 
-    console.log(userData.link);
+    // console.log(userData.link);
 
 
     return (
