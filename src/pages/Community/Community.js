@@ -44,7 +44,7 @@ const Comment = (props) => {
                 {props.connect == true ? <div className="vl"></div> : null}
             </div>
             <div className="comment">
-                <img src={generator.generateRandomAvatar()} className="game-icon" />
+                <img src={generator.generateRandomAvatar(props.user_name)} className="game-icon" />
                 <div className="comment-text">
                     <div className="comment-header">
                         <span>Posted by</span> {props.user_name} 
