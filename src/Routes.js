@@ -30,7 +30,7 @@ const Routes = () => {
                         <Route exact path={ExplorePagePath} component={Explore} />
                         <Route exact path={CommunityPagePath} component={Community} />
                         <Route exact path={UserProfile + "/:userid"} component={User}/>
-                        {user ? <Route exact path={postPath} component={Post}/> : <Route exact path={postPath} component={Login}/>}
+                        <Route exact path={postPath} component={Post}/>
                     </Switch>
                     </BodyWrapper>
                     </ExploreProvider>
