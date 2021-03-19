@@ -9,6 +9,7 @@
     margin-bottom: 60px;
     display: flex;
     flex-direction: row;
+    text-decoration: none;
     align-items: center;
     box-shadow: 0 6px 10px #5A5A77, 0 0 6px #5A5A77;
     transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
@@ -17,6 +18,7 @@
 .card-container:hover{
     transform: scale(1.05);
     box-shadow: 0 10px 20px #393950, 0 4px 8px #393950;
+    text-decoration: none !important;
 }
 
 .card-img{
@@ -39,6 +41,10 @@
     color: white;
 }
 
+.card-title:hover{
+    text-decoration: none !important;
+}
+
 .card-desc{
     font-family: Poppins;
     font-style: normal;
@@ -46,4 +52,5 @@
     font-size: 32px;
     line-height: 48px;
     color: #94A1B2;
+    text-decoration: none;
 }
