@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {HomePagePath, LoginPagePath, ExplorePagePath, CommunityPagePath, UserProfile, postPath} from './constants/Paths';
 import Login from './pages/Login';
@@ -8,11 +8,15 @@ import Navbar from './components/Navbar';
 import Community from "./pages/Community";
 import User from './pages/User'
 import Post from './pages/Post'
-import {AuthProvider} from './auth';
+import {AuthProvider, AuthContext} from './auth';
 import {ExploreProvider} from './context/ExploreContext'
 import BodyWrapper from './BodyWrapper';
+import Footer from './components/Footer';
 
 const Routes = () => {
+
+    const user = useContext(AuthContext)
+
     return (
         <>
             <AuthProvider>
@@ -29,6 +33,7 @@ const Routes = () => {
                         <Route exact path={UserProfile + "/:userid"} component={User}/>
                         <Route exact path={postPath} component={Post}/>
                     </Switch>
+                    <Footer />
                     </BodyWrapper>
                     </ExploreProvider>
                 </BrowserRouter>

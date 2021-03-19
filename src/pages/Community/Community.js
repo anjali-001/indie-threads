@@ -2,12 +2,14 @@ import React, {useContext, useState, useEffect, useRef} from 'react';
 import FeatherIcon from "feather-icons-react";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import {TwitterShareButton} from 'react-share';
+import Filter from 'bad-words';
 import firebase from 'firebase';
+import { AvatarGenerator } from 'random-avatar-generator';
 
 import fire from '../../fire';
 import { AuthContext } from '../../auth';
 import CreateThreadModal from '../../components/Modal';
-
+import example from '../../assets/example.png'
 import './Community.css';
 
 const TAG2COLORS = {
@@ -38,14 +40,14 @@ const Tag = (props) => {
 }
 
 const Comment = (props) => {
-
+    const generator = new AvatarGenerator();
     return(
         <>
             <div className="comments-container">
                 {props.connect == true ? <div className="vl"></div> : null}
             </div>
             <div className="comment">
-                <div className="game-icon" />
+                <img src={generator.generateRandomAvatar()} className="game-icon" />
                 <div className="comment-text">
                     <div className="comment-header">
                         <span>Posted by</span> {props.user_name} 
@@ -75,6 +77,7 @@ const Community = (props) => {
     const dummy = useRef();
     const commentsRef = fire.firestore().collection("comments");
     const query = commentsRef.orderBy("createdAt", "desc").where('gameId', '==', props.match.params.id);
+    const filter = new Filter();
 
     const [messages] = useCollectionData(
         query, 
@@ -124,9 +127,19 @@ const Community = (props) => {
         e.preventDefault();
 
         const { uid, photoURL } = currentUser.currentUser;
+
+        // console.log('Filter words: ',filter.isProfane(formValue));
+        // console.log('Cleaned Text: ', filter.clean(formValue));
+
+        // Implemented the bad words filtering feature
+        let cleanedText = formValue;
+
+        if(filter.isProfane(formValue)){
+            cleanedText = filter.clean(formValue);
+        }
         
         await commentsRef.add({
-            text: formValue,
+            text: cleanedText,
             replyTo: "",
             gameId:props.match.params.id,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -154,14 +167,14 @@ const Community = (props) => {
             <Tag key={value} value={value} />
         )
     })
-    
+    console.log(user)
     return (
         <>
             <div className="home componentContainer">
                 <div className="localContainer">
                     
                     <div className="header">
-                        <div className="game-icon" />
+                        <img className="game-icon" src={example}/>
                         <div className="sub-header">
                             <h1 className="title">
                                 {user.title}
@@ -188,9 +201,11 @@ const Community = (props) => {
                     </div>
 
                     <div className="media-section">
-                        <div className="section-img__1" />
-                        <div className="section-img__2" />
-                        <div className="section-video" />
+                        {user.gameplayImages.map((image) => {
+                            return(
+                                <img src={image} />
+                            )
+                        })}
                     </div>
 
                     <div className="info-section">
