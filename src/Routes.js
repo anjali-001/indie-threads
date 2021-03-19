@@ -11,6 +11,7 @@ import Post from './pages/Post'
 import {AuthProvider} from './auth';
 import {ExploreProvider} from './context/ExploreContext'
 import BodyWrapper from './BodyWrapper';
+import Footer from './components/Footer';
 
 const Routes = () => {
     return (
@@ -29,6 +30,7 @@ const Routes = () => {
                         <Route exact path={UserProfile + "/:userid"} component={User}/>
                         <Route exact path={postPath} component={Post}/>
                     </Switch>
+                    <Footer />
                     </BodyWrapper>
                     </ExploreProvider>
                 </BrowserRouter>
