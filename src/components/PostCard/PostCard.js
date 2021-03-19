@@ -8,7 +8,7 @@ const PostCard = (props) => {
 
 
     return(
-        <Link to={{ pathname:"/game/"+String(props.post.gameId)}}>
+        <Link to={{ pathname:"/game/"+String(props.post.gameId)}} className="card-link">
             <div className="card-container">
                 <div className="card-img-container">
                     <img className="card-img" src={example}/>

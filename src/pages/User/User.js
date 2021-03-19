@@ -87,7 +87,9 @@ const User = (props) => {
            <div className="row">
                <div className="col-md-3 col-3 user__left">
                     {/* <img className="m-5" src={img} alt="user profile logo"/> */}
-                    <img src={generator.generateRandomAvatar()} alt="user profile logo"/>
+                    <h2 className="m-5">{loading === true ? <Spinner /> : (
+                        <img src={generator.generateRandomAvatar(userData.username)} alt="user profile logo"/>
+                    ) }</h2>
                </div>
                <div className="col-md-9 col-9 user__right">
                    <div className="user__rightName">

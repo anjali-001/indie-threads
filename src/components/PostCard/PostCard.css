@@ -47,3 +47,7 @@
     line-height: 48px;
     color: #94A1B2;
 }
+
+.card-link{
+    text-decoration: none;
+}

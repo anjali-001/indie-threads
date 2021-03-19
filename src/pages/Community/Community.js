@@ -201,7 +201,7 @@ const Community = (props) => {
                     </div>
 
                     <div className="media-section">
-                        {user.gameplatImages.map((image) => {
+                        {user.gameplayImages.map((image) => {
                             // console.log("Check URL: ", image);
                             return(
                                 <img src={image} />
