@@ -70,6 +70,29 @@
         padding-right: 10px;
     }
 
+    /* Social Media Icons  */
+    .socialmediaContainer{
+        margin: 0 5.4em;
+    }
+
+    .socialMedia-icons{
+        color: #2CB67D;
+        width: 36px;
+        height: auto;
+        border: 2px solid #2CB67D;
+        border-radius: 20px;
+        padding: 5px;
+        margin-right: 5px;
+    }
+
+    .socialMedia-icons:hover{
+        color: #FFFFFE;
+        background-color: #2CB67D;
+        transition: background-color 0.2s ease-in;
+        transition: color 0.1s ease-in;
+    }
+
+
 .media-section{
     margin: 0 3em;
     max-width: 100%;
