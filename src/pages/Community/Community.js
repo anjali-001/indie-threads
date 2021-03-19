@@ -2,6 +2,7 @@ import React, {useContext, useState, useEffect, useRef} from 'react';
 import FeatherIcon from "feather-icons-react";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import Filter from 'bad-words';
 import firebase from 'firebase';
 
 import fire from '../../fire';
@@ -75,6 +76,7 @@ const Community = (props) => {
     const dummy = useRef();
     const commentsRef = fire.firestore().collection("comments");
     const query = commentsRef.orderBy("createdAt", "desc").where('gameId', '==', props.match.params.id);
+    const filter = new Filter();
 
     const [messages] = useCollectionData(
         query, 
@@ -124,9 +126,19 @@ const Community = (props) => {
         e.preventDefault();
 
         const { uid, photoURL } = currentUser.currentUser;
+
+        // console.log('Filter words: ',filter.isProfane(formValue));
+        // console.log('Cleaned Text: ', filter.clean(formValue));
+
+        // Implemented the bad words filtering feature
+        let cleanedText = formValue;
+
+        if(filter.isProfane(formValue)){
+            cleanedText = filter.clean(formValue);
+        }
         
         await commentsRef.add({
-            text: formValue,
+            text: cleanedText,
             replyTo: "",
             gameId:props.match.params.id,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
