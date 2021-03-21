@@ -17,7 +17,7 @@ A free platform for gamers to explore the indie gaming community, discussion, pr
 </p>
 
 <p align="center">
-  <a style="padding: 0 10px;" href="https://indie-threads.netlify.app/">Live Demo</a> • 
+  <a style="padding: 0 10px;" target="#" href="https://indie-threads.netlify.app/">Live Demo</a> • 
   <a style="padding: 0 10px;" href="#contributing">Contributing</a> • 
   <a style="padding: 0 10px;" href="#features">Features</a>
 </p>
@@ -69,7 +69,7 @@ npm start
 
 <p align="center" style="margin: 20px 0 30px 0">
 
-  <a href="http://www.youtube.com/watch?v=hEmpHsZgTJo">
+  <a href="http://www.youtube.com/watch?v=hEmpHsZgTJo" target="#">
     <img src="./assets/video.png" style="width:300px">
   </a>
 </p>  
