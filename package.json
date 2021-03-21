@@ -19,8 +19,8 @@
     "graphql-tag": "^2.11.0",
     "jodit-react": "^1.0.71",
     "material-design-icons": "^3.0.1",
-    "random-avatar-generator": "^2.0.0",
     "node-emoji": "^1.10.0",
+    "random-avatar-generator": "^2.0.0",
     "react": "^17.0.1",
     "react-apollo": "^3.1.5",
     "react-bootstrap": "^1.5.1",
@@ -38,7 +38,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint ./",
+    "lint:fix": "eslint ./ --fix",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\""
   },
   "eslintConfig": {
     "extends": [
@@ -57,5 +60,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "prettier": "^2.2.1"
   }
 }

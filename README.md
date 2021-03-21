@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./assets/logo.svg" alt="platform logo"/>
+    <img style="margin: 0 0 0 40px" src="./assets/logo.svg" alt="platform logo"/>
 </p>
 
 <p align="center">
@@ -16,21 +16,78 @@ A free platform for gamers to explore the indie gaming community, discussion, pr
   <img src="https://camo.githubusercontent.com/3dbcfa4997505c80ef928681b291d33ecfac2dabf563eb742bb3e269a5af909c/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f496c65726961796f2f6d61726b646f776e2d6261646765733f7374796c653d666f722d7468652d6261646765"/>
 </p>
 
+<p align="center">
+  <a style="padding: 0 10px;" href="https://indie-threads.netlify.app/">Live Demo</a> • 
+  <a style="padding: 0 10px;" href="#contributing">Contributing</a> • 
+  <a style="padding: 0 10px;" href="#features">Features</a>
+</p>
+
+
 
 <h2 align="center" style="font-weight:bold">Project Description</h2>
 
-A free platform for gamers to explore the <span style="color:#2CB67D">indie gaming community</span>, discussion, promotion by/for developers and players. To spread word of mouth thereby reducing strain on the high budget of advertising. And we'll not be collecting any personal data of user/visitor. Big gaming companies uses their major funds in advertising by paying off the streamers to spread the word of mouth among their viewers and others, this platform would provide them with the same <span style="color:#2CB67D">help without the high budget requirement.</span>
+A free platform for gamers to explore the <span style="color:#2CB67D;font-weight:bold">indie gaming community</span>, discussion, promotion by/for developers and players. To spread word of mouth thereby reducing strain on the high budget of advertising. And we'll not be collecting any personal data of user/visitor. Big gaming companies uses their major funds in advertising by paying off the streamers to spread the word of mouth among their viewers and others, this platform would provide them with the same <span style="color:#2CB67D;font-weight:bold">help without the high budget requirement.</span>
 
+<h2 align="center" style="font-weight:bold" id="features">Platform Features</h2>
+
+- <span style="color:#2CB67D;font-weight:bold">Create community for your games:</span> Create a profile for your game, with discussion forums, ratings, platforms available on, genre, system requirement and lots more.
+
+- <span style="color:#2CB67D;font-weight:bold">Safe environment for dicussions:</span> We have implemented **profane language filters** to clean up bad language in the discussion forums.
+
+- <span style="color:#2CB67D;font-weight:bold">Open for all:</span> Even if a person doesn't create a profile, they can **access the forums' content without the obligation of creating a profile**, he/she will have to create a profile only if they want to add to the content.
+
+- <span style="color:#2CB67D;font-weight:bold">Promote your games:</span> We provide you the feature to **promote your game and its community** in various social media platforms **with just one click.**
 
 <h2 align="center" style="font-weight:bold">Core Values</h2>
 
 1. Serve the community of **"small" known and unknown gaming communities** around the internet.
 2. Help independent game developers to **create a community for their games.**
 
+<h2 align="center" style="font-weight:bold" id="contributing">Contributing</h2>
 
-<h2 align="center" style="font-weight:bold">Platform Featuress</h2>
+<span style="color:#2CB67D;font-weight:bold">Indie Threads</span> is an open source project, and any contributions to the project is highly appreciated and encouraged. Feel free to open issues to report bugs or request new features and label them accordingly.
 
-- Making **threads/pages** for different indie games which would **serve as discussion forums**, reviews, screenshots, videos, stats(rating, current active user base, rank, related games, etc.)
-- Giving an **option of creating profiles** that would serve as a **gaming profile** of a person with ratings, games played, currently playing, platforms available on, tags(PC/PS4), person's gaming setup, system requirement for the game, etc. Even if a person doesn't create a profile, they can **access the forums' content without the obligation of creating a profile**, he/she will have to create a profile only if they want to add to the content.
-- Indie games can suffer from a good amount of cheaters who spoils the gaming experience completely. We can convey the message to Game Devs by contacting them with the gamers' community **support and feedback**.
-- **Monitoring** for the kind of **content** being put out by people with the help of **admin & moderators**.
+* Make sure to run `npm run format` to format all the files based on the ESLint configuration.
+* Run `npm run lint:fix` to enforce the linting rules before any PR.
+
+**Fireabase setup:** create a firebase project and copy the credentials to `.env.local` file in the root folder. A sample `.env.local` file is provided as `.env.example`.
+
+<h3 style="font-weight:bold">Setup Development environment</h3>
+
+```bash
+# clone the repository to the local directory
+git clone https://github.com/anjali-001/indie-threads.git
+
+# install the dependencies
+npm install
+
+# start the react app
+npm start
+```
+
+<h2 align="center" style="font-weight:bold" id="contributing">Project Demo</h2>
+
+<p align="center" style="margin: 20px 0 30px 0">
+
+  <a href="http://www.youtube.com/watch?v=hEmpHsZgTJo">
+    <img src="./assets/video.png" style="width:300px">
+  </a>
+</p>  
+
+<p align="center" style="margin: 0 70px 30px 0">
+The following is the video demostration of the platform features at the time of submission to the Explorer sprint 
+</p>
+
+<h2 align="center" style="font-weight:bold" id="contributing">Core Team & Inspiration</h2>
+
+This project was initially developed by the following members for the [MLH Explorer Sprint 1](https://devpost.com/software/indie-threads?ref_content=user-portfolio&ref_feature=in_progress). The theme for the spirint was **gaming**. So, we thought of creating a free platform for indie game devs to promote and advertise their games without having to worry about a high budget requirement for promotions whilst providing a channel to the gamers to explore the indie-gaming community which would serve as discussion forums at the same time, indie-threads took its shape.
+
+- [Anjali](https://github.com/anjali-001)
+- [Keshavaa Shaiskandan](https://github.com/skeshavaa)
+- [Siddesh Sambasivam Suseela](https://github.com/SiddeshSambasivam)
+
+**Authored By:** Siddesh
+
+<h2 align="left" style="font-weight:bold" id="contributing">License</h2>
+
+Indie Threads is open source and available under the [MIT License](LICENSE).
