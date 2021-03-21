@@ -26,17 +26,17 @@ A free platform for gamers to explore the indie gaming community, discussion, pr
 
 <h2 align="center" style="font-weight:bold">Project Description</h2>
 
-A free platform for gamers to explore the <span style="color:#2CB67D;font-weight:bold">indie gaming community</span>, discussion, promotion by/for developers and players. To spread word of mouth thereby reducing strain on the high budget of advertising. And we'll not be collecting any personal data of user/visitor. Big gaming companies uses their major funds in advertising by paying off the streamers to spread the word of mouth among their viewers and others, this platform would provide them with the same <span style="color:#2CB67D;font-weight:bold">help without the high budget requirement.</span>
+A free platform for gamers to explore the **indie gaming community**, discussion, promotion by/for developers and players. To spread word of mouth thereby reducing strain on the high budget of advertising. And we'll not be collecting any personal data of user/visitor. Big gaming companies uses their major funds in advertising by paying off the streamers to spread the word of mouth among their viewers and others, this platform would provide them with the same **help without the high budget requirement.**
 
 <h2 align="center" style="font-weight:bold" id="features">Platform Features</h2>
 
-- <span style="color:#2CB67D;font-weight:bold">Create community for your games:</span> Create a profile for your game, with discussion forums, ratings, platforms available on, genre, system requirement and lots more.
+- **Create community for your games:** Create a profile for your game, with discussion forums, ratings, platforms available on, genre, system requirement and lots more.
 
-- <span style="color:#2CB67D;font-weight:bold">Safe environment for dicussions:</span> We have implemented **profane language filters** to clean up bad language in the discussion forums.
+- **Safe environment for dicussions:** We have implemented **profane language filters** to clean up bad language in the discussion forums.
 
-- <span style="color:#2CB67D;font-weight:bold">Open for all:</span> Even if a person doesn't create a profile, they can **access the forums' content without the obligation of creating a profile**, he/she will have to create a profile only if they want to add to the content.
+- **Open for all:** Even if a person doesn't create a profile, they can **access the forums' content without the obligation of creating a profile**, he/she will have to create a profile only if they want to add to the content.
 
-- <span style="color:#2CB67D;font-weight:bold">Promote your games:</span> We provide you the feature to **promote your game and its community** in various social media platforms **with just one click.**
+- **Promote your games:** We provide you the feature to **promote your game and its community** in various social media platforms **with just one click.**
 
 <h2 align="center" style="font-weight:bold">Core Values</h2>
 
@@ -45,7 +45,7 @@ A free platform for gamers to explore the <span style="color:#2CB67D;font-weight
 
 <h2 align="center" style="font-weight:bold" id="contributing">Contributing</h2>
 
-<span style="color:#2CB67D;font-weight:bold">Indie Threads</span> is an open source project, and any contributions to the project is highly appreciated and encouraged. Feel free to open issues to report bugs or request new features and label them accordingly.
+**Indie Threads** is an open source project, and any contributions to the project is highly appreciated and encouraged. Feel free to open issues to report bugs or request new features and label them accordingly.
 
 * Make sure to run `npm run format` to format all the files based on the ESLint configuration.
 * Run `npm run lint:fix` to enforce the linting rules before any PR.
