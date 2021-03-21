@@ -1,5 +1,5 @@
 <p align="center">
-    <img style="margin: 0 0 0 40px" src="./assets/logo.svg" alt="platform logo"/>
+    <img style="margin: 0 0 0 60px" src="./assets/logo.svg" alt="platform logo"/>
 </p>
 
 <p align="center">
