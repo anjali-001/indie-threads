@@ -162,7 +162,7 @@ function NavHeader() {
                 <button className="" onClick={handleLogout}>Sign Out</button>
             </div>
           ) : null}
-          {dropdown && !user.currentUser ? (
+          {dropdown && !loggedIn() ? (
             <div className="navHeader__dropdownContent2">
               <Link className="" to="/login">Sign In/Register</Link>
             </div>
