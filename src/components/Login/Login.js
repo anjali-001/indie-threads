@@ -3,7 +3,7 @@ import React from 'react';
 
 const Login = (props) => {
 
-    const { bio, setBio, link, setLink, interests, setInterests, username, setUsername, email, setEmail, password, setPassword, handleLogin, handleSignUp, account, setAccount, emailError, passwordError } = props
+    const { handleLoginWithDeck, bio, setBio, link, setLink, interests, setInterests, username, setUsername, email, setEmail, password, setPassword, handleLogin, handleSignUp, account, setAccount, emailError, passwordError } = props
 
     return (
         <section className="login">
@@ -67,6 +67,7 @@ const Login = (props) => {
                         <>
                         <button onClick={handleLogin}>Sign in</button>
                         <p>Don't have an account ? <span onClick={() => setAccount(!account)}>Sign up</span></p>
+                        <button  onClick={handleLoginWithDeck}><a href="http://localhost:3001/" target="_blank" rel="noreferrer">Sign In with Deck</a></button>
                         </>
                     ) :
                     (
