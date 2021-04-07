@@ -80,6 +80,7 @@
     font-family: Poppins, sans-serif;
     color: white;
     margin-top: 20px;
+    text-decoration: none;
   }
   
   .login .loginContainer .btnContainer p {
