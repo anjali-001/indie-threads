@@ -66,8 +66,8 @@ const Login = (props) => {
                     {account ? (
                         <>
                         <button onClick={handleLogin}>Sign in</button>
+                        <button  className="deck" onClick={handleLoginWithDeck}><a href="http://localhost:3001/" target="_blank" rel="noreferrer">Sign In with Deck</a></button>
                         <p>Don't have an account ? <span onClick={() => setAccount(!account)}>Sign up</span></p>
-                        <button  onClick={handleLoginWithDeck}><a href="http://localhost:3001/" target="_blank" rel="noreferrer">Sign In with Deck</a></button>
                         </>
                     ) :
                     (

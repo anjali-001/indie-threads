@@ -32,6 +32,7 @@
     width: 100%;
     max-width: 520px;
     max-height: 900px;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,13 +74,22 @@
   }
   
   .login .loginContainer .btnContainer button{
-    width: 25%;
+    /* width: 25%; */
     border-radius: 20px;
     padding: 12px 12px;
     background-color: #2CB67D;
     font-family: Poppins, sans-serif;
     color: white;
     margin-top: 20px;
+    text-decoration: none;
+  }
+  .login .loginContainer .btnContainer .deck, a{
+    float: right; 
+    color: white;
+    text-decoration: none; 
+  }  
+
+  .login .loginContainer .btnContainer a:hover {
     text-decoration: none;
   }
   
