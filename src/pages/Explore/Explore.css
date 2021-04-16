@@ -22,6 +22,8 @@ div{
 
 .home__filter{
     list-style: none;
+    display: flex;
+    flex-direction: column;
 }
 
 .home__filter li:hover{
