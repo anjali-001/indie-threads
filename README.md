@@ -47,9 +47,6 @@ A free platform for gamers to explore the **indie gaming community**, discussion
 
 **Indie Threads** is an open source project, and any contributions to the project is highly appreciated and encouraged. Feel free to open issues to report bugs or request new features and label them accordingly.
 
-* Make sure to run `npm run format` to format all the files based on the ESLint configuration.
-* Run `npm run lint:fix` to enforce the linting rules before any PR.
-
 **Fireabase setup:** create a firebase project and copy the credentials to `.env.local` file in the root folder. A sample `.env.local` file is provided as `.env.example`.
 
 <h3 style="font-weight:bold">Setup Development environment</h3>
